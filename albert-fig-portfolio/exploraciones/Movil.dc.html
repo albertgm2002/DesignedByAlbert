@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Híbrido — Móvil</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#1A1A1E}a:hover{color:#D9480F}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; overflow: hidden; display: flex; flex-direction: column; font-family: 'Instrument Sans', sans-serif; color: #1A1A1E; background: #F2F2F0">
+
+  <header style="height: 56px; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; background: #FFFFFF; border-bottom: 1px solid #E2E2DE">
+    <div style="display: flex; align-items: center; gap: 10px; font-size: 14px">
+      <div style="width: 26px; height: 26px; border-radius: 7px; background: #D9480F; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">A</div>
+      <span style="font-weight: 600">albert.fig</span>
+    </div>
+    <a href="#" style="text-decoration: none; background: #D9480F; color: #FFFFFF; padding: 10px 14px; border-radius: 8px; font-weight: 600; font-size: 14px">Contactar</a>
+  </header>
+
+  <sc-if value="{{isHero}}" hint-placeholder-val="{{true}}">
+    <div style="flex: 1; min-height: 0; padding: 20px 16px; display: flex; flex-direction: column; gap: 14px; background-image: radial-gradient(#CFCFCA 1.2px, transparent 1.2px); background-size: 20px 20px">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6B6B74">Hero — 390</div>
+      <div style="background: #FFFFFF; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 28px 22px; display: flex; flex-direction: column; gap: 12px">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6B6B74">Diseñador UX/UI · España</div>
+        <div style="position: relative; align-self: flex-start">
+          <h1 style="margin: 0; font-size: 76px; line-height: 0.9; font-weight: 700; letter-spacing: -0.045em">Albert</h1>
+          <div style="position: absolute; inset: -6px; border: 1.5px solid #D9480F"></div>
+        </div>
+        <p style="margin: 8px 0 0; font-size: 17px; line-height: 1.4; color: #3A3A42">Diseño productos digitales desde el research hasta el último pixel.</p>
+      </div>
+      <div style="display: flex; gap: 8px; align-items: flex-start">
+        <div style="width: 26px; height: 26px; flex-shrink: 0; border-radius: 50% 50% 50% 0; background: #2563EB; color: #FFFFFF; font-size: 10px; font-weight: 600; display: flex; align-items: center; justify-content: center">PM</div>
+        <div style="background: #FFFFFF; border-radius: 10px; padding: 9px 11px; font-size: 13px; line-height: 1.4; box-shadow: 0 4px 14px rgba(0,0,0,0.1)">¿Esto lo hizo él solo? <span style="color: #5C5C66">→ Sí, del research a la UI.</span></div>
+      </div>
+      <a href="Proyecto.dc.html" style="text-decoration: none; display: flex; flex-direction: column; gap: 6px; margin-top: 4px">
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6B6B74">[PROYECTO 01] ↗</span>
+        <span style="height: 120px; background: #1A1A1E; display: flex; align-items: center; justify-content: center; gap: 8px">
+          <span style="width: 44px; height: 88px; border-radius: 9px; background: #3A3A42"></span>
+          <span style="width: 44px; height: 88px; border-radius: 9px; background: #D9480F"></span>
+          <span style="width: 44px; height: 88px; border-radius: 9px; background: #3A3A42"></span>
+        </span>
+      </a>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{isLayers}}" hint-placeholder-val="{{false}}">
+    <nav style="flex: 1; min-height: 0; background: #FFFFFF; display: flex; flex-direction: column; font-size: 16px">
+      <div style="padding: 18px 16px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #6B6B74">CAPAS</div>
+      <a href="#" style="text-decoration: none; padding: 14px 16px; border-bottom: 1px solid #ECECE8; font-weight: 600">▢ Hero</a>
+      <div style="padding: 14px 16px 6px; font-weight: 600">▾ ▢ Proyectos</div>
+      <a href="Proyecto.dc.html" style="text-decoration: none; padding: 14px 16px 14px 40px; border-bottom: 1px solid #ECECE8; display: flex; justify-content: space-between"><span>[PROYECTO 01]</span><span style="color: #D9480F">↗</span></a>
+      <a href="Proyecto.dc.html" style="text-decoration: none; padding: 14px 16px 14px 40px; border-bottom: 1px solid #ECECE8; display: flex; justify-content: space-between"><span>[PROYECTO 02]</span><span style="color: #D9480F">↗</span></a>
+      <a href="Proyecto.dc.html" style="text-decoration: none; padding: 14px 16px 14px 40px; border-bottom: 1px solid #ECECE8; display: flex; justify-content: space-between"><span>[PROYECTO 03]</span><span style="color: #D9480F">↗</span></a>
+      <a href="#" style="text-decoration: none; padding: 14px 16px; border-bottom: 1px solid #ECECE8">▢ Sobre mí</a>
+      <a href="#" style="text-decoration: none; padding: 14px 16px; border-bottom: 1px solid #ECECE8">▢ Contacto</a>
+      <div style="padding: 14px 16px; color: #6B6B74; font-style: italic">◌ capa oculta</div>
+    </nav>
+  </sc-if>
+
+  <div style="flex-shrink: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 10px 16px 24px; background: #1A1A1E">
+    <button type="button" onClick="{{showHero}}" style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; min-height: 44px; border-radius: 10px; border: none; cursor: pointer; background: {{heroBg}}; color: #FFFFFF">Lienzo</button>
+    <button type="button" onClick="{{showLayers}}" style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; min-height: 44px; border-radius: 10px; border: none; cursor: pointer; background: {{layersBg}}; color: #FFFFFF">Capas</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { tab: 'hero' };
+  }
+  renderVals() {
+    const t = this.state.tab;
+    return {
+      isHero: t === 'hero',
+      isLayers: t === 'layers',
+      heroBg: t === 'hero' ? '#D9480F' : '#3A3A42',
+      layersBg: t === 'layers' ? '#D9480F' : '#3A3A42',
+      showHero: () => this.setState({ tab: 'hero' }),
+      showLayers: () => this.setState({ tab: 'layers' })
+    };
+  }
+}
+</script>
+</body>
+</html>
