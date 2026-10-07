@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Albert — Portfolio</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Caveat:wght@500;700&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#1A1A1E}a:hover{color:#D9480F}
+input[type=range]{accent-color:#D9480F}
+.cell{transition:box-shadow .2s ease}
+.cell:hover{box-shadow:0 0 0 2px #D9480F}
+.row:hover{background:#26262C}
+.pola{transition:transform .25s ease}
+.pola:hover{transform:rotate(0deg) scale(1.06) !important;z-index:5}
+.rail{transition:opacity .35s ease}
+@media (max-width: 960px){.rail{display:none !important}}
+@media (prefers-reduced-motion: reduce){.pola,.cell{transition:none}}
+</style>
+</helmet>
+<div style="width: 100%; font-family: 'Instrument Sans', sans-serif; color: #1A1A1E; background-color: #F7F7F5; background-image: linear-gradient(#ECECE8 1px, transparent 1px), linear-gradient(90deg, #ECECE8 1px, transparent 1px); background-size: 24px 24px">
+
+  <!-- Barra superior + regla -->
+  <div style="position: sticky; top: 0; z-index: 20">
+    <header style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; padding: 12px 24px; background: #FFFFFF; border-bottom: 1px solid #E2E2DE">
+      <div style="display: flex; align-items: center; gap: 12px; font-size: 14px">
+        <div style="width: 24px; height: 24px; border-radius: 6px; background: #D9480F; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px">A</div>
+        <span style="font-weight: 600">albert.fig</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #5C5C66">
+        <span>España · {{clock}}</span>
+        <a href="#f05" style="text-decoration: none">Email</a>
+        <a href="#" style="text-decoration: none">LinkedIn</a>
+      </div>
+    </header>
+    <div style="height: 20px; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 24px; background-color: #FFFFFF; background-image: repeating-linear-gradient(90deg, #C9C9C4 0 1px, transparent 1px 12px); background-size: 100% 6px; background-repeat: no-repeat; background-position: bottom; border-bottom: 1px solid #E2E2DE; font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #8A8A92">
+      <span>0</span><span>120</span><span>240</span><span>360</span><span>480</span><span>600</span><span>720</span><span>840</span><span>960</span><span>1080</span><span>1200</span><span>1320</span><span>1440</span>
+    </div>
+  </div>
+  <div style="padding: 6px 24px 0; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8A8A92">Columna 1240 · Escala 1:1</div>
+
+  <div style="max-width: 1440px; margin: 0 auto; padding: 32px 24px 0; display: flex; gap: 32px; align-items: flex-start">
+
+    <!-- ===================== CONTENIDO ===================== -->
+    <main style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 72px; padding-bottom: 72px">
+
+      <!-- FRAME 01 · IDENTIDAD -->
+      <section id="f01" style="display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; align-items: center; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8A8A92">
+          <span>|←</span><span style="flex: 1; border-top: 1px solid #C9C9C4"></span><span>1240</span><span style="flex: 1; border-top: 1px solid #C9C9C4"></span><span>→|</span>
+        </div>
+        <div style="position: relative; background: #FFFFFF; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 56px clamp(24px, 5vw, 72px); display: flex; flex-direction: column; gap: 22px">
+          <span style="position: absolute; left: -7px; top: -9px; font-family: 'IBM Plex Mono', monospace; color: #D9480F">+</span>
+          <span style="position: absolute; right: -7px; top: -9px; font-family: 'IBM Plex Mono', monospace; color: #D9480F">+</span>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #6B6B74">◇ FRAME 01 · IDENTIDAD</div>
+          <div style="font-size: 20px">Hola, soy</div>
+          <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 18px; position: relative">
+            <div style="position: relative">
+              <h1 style="margin: 0; font-size: clamp(64px, 10vw, 128px); line-height: 0.9; font-weight: 700; letter-spacing: -0.045em">Albert</h1>
+              <div style="position: absolute; inset: -8px; border: 1.5px solid #D9480F"></div>
+              <div style="position: absolute; left: -12px; top: -12px; width: 8px; height: 8px; background: #FFFFFF; border: 1.5px solid #D9480F"></div>
+              <div style="position: absolute; right: -12px; top: -12px; width: 8px; height: 8px; background: #FFFFFF; border: 1.5px solid #D9480F"></div>
+              <div style="position: absolute; left: -12px; bottom: -12px; width: 8px; height: 8px; background: #FFFFFF; border: 1.5px solid #D9480F"></div>
+              <div style="position: absolute; right: -12px; bottom: -12px; width: 8px; height: 8px; background: #FFFFFF; border: 1.5px solid #D9480F"></div>
+            </div>
+            <div style="font-size: clamp(64px, 10vw, 128px); line-height: 0.9; font-weight: 400; letter-spacing: -0.045em; color: #8A8A92">[Apellido]</div>
+            <div style="display: flex; align-items: center; gap: 4px; margin-left: 8px; align-self: center">
+              <svg width="64" height="34" viewBox="0 0 64 34" fill="none"><path d="M62 6 C 44 2, 26 8, 10 24 M10 24 L 20 22 M10 24 L 12 14" stroke="#D9480F" stroke-width="2" stroke-linecap="round"></path></svg>
+              <span style="font-family: 'Caveat', cursive; font-size: 26px; color: #D9480F">yo, el de las cajitas</span>
+            </div>
+          </div>
+          <div style="font-size: 20px; color: #5C5C66">Diseñador UX/UI</div>
+          <div style="display: flex; flex-direction: column; gap: 16px; max-width: 720px; font-size: 19px; line-height: 1.55; color: #2A2A30">
+            <p style="margin: 0">Diseño productos digitales de principio a fin: hablo con usuarios, ordeno lo que encuentro y lo convierto en interfaces que se entienden a la primera. [DÓNDE TRABAJAS AHORA Y QUÉ HACES ALLÍ].</p>
+            <p style="margin: 0">[UNA FRASE CON TU PROYECTO MÁS IMPORTANTE Y A CUÁNTA GENTE LLEGA, SI LO SABES].</p>
+            <p style="margin: 0">Vivo en España y trabajo en español, catalán e inglés. Escríbeme por <a href="#f05">email</a> o encuéntrame en <a href="#">LinkedIn</a>.</p>
+          </div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6B6B74">Actualizado en octubre de 2026</div>
+
+          <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 10px">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6B6B74">Fig 0.1 · Seis proyectos. Cada celda es algo que diseñé.</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
+              <sc-for list="{{cells}}" as="c" hint-placeholder-count="6">
+                <a href="#f02" class="cell" style="text-decoration: none; position: relative; height: 210px; display: flex; align-items: flex-end; padding: 14px; box-sizing: border-box; background: {{c.bg}}; color: {{c.fg}}">
+                  <span style="position: absolute; top: 12px; left: 14px; font-family: 'IBM Plex Mono', monospace; font-size: 12px">{{c.n}}</span>
+                  <span style="font-weight: 600; font-size: 16px">{{c.name}}</span>
+                </a>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FRAME 02 · CASOS -->
+      <section id="f02" style="display: flex; flex-direction: column; gap: 8px">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8A8A92">Frame 02 — Casos</div>
+        <div style="background: #141417; color: #F2F2F0; padding: 56px clamp(24px, 5vw, 72px); display: flex; flex-direction: column; gap: 22px">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #A1A1AA">◇ FRAME 02 · HISTORIAL DE VERSIONES</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #A1A1AA">— Del boceto a la pantalla</div>
+          <h2 style="margin: 0; font-size: 48px; line-height: 1; font-weight: 700; letter-spacing: -0.03em">Casos</h2>
+          <p style="margin: 0; max-width: 720px; font-size: 18px; line-height: 1.55; color: #D4D4D8">Cada proyecto con su recorrido entero. Arrastra el slider para ver de qué wireframe salió cada pantalla, y elige un caso en el historial.</p>
+
+          <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 10px">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #A1A1AA">Fig 0.2 · {{activeName}} — wireframe ↔ UI final</div>
+            <div style="position: relative; height: 500px; overflow: hidden; border-radius: 6px">
+              <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 28px; background-color: #FFFFFF; background-image: linear-gradient(#E9EEF6 1px, transparent 1px), linear-gradient(90deg, #E9EEF6 1px, transparent 1px); background-size: 20px 20px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #6B6B74">
+                <div style="width: 180px; height: 380px; border: 2px solid #9E9E9E; border-radius: 26px; box-sizing: border-box; padding: 18px 14px; display: flex; flex-direction: column; gap: 10px; background: #FFFFFF">
+                  <div style="height: 12px; width: 60%; background: #D4D4D4"></div>
+                  <div style="height: 104px; border: 1.5px dashed #B5B5B5; display: flex; align-items: center; justify-content: center">imagen</div>
+                  <div style="height: 10px; width: 85%; background: #D4D4D4"></div>
+                  <div style="height: 10px; width: 65%; background: #D4D4D4"></div>
+                  <div style="margin-top: auto; height: 40px; background: #9E9E9E; color: #FFFFFF; display: flex; align-items: center; justify-content: center">[ CTA ]</div>
+                </div>
+                <div style="width: 180px; height: 380px; border: 2px solid #9E9E9E; border-radius: 26px; box-sizing: border-box; padding: 18px 14px; display: flex; flex-direction: column; gap: 10px; background: #FFFFFF">
+                  <div style="height: 12px; width: 45%; background: #D4D4D4"></div>
+                  <div style="height: 50px; border: 1.5px solid #B5B5B5"></div>
+                  <div style="height: 50px; border: 1.5px solid #B5B5B5"></div>
+                  <div style="height: 50px; border: 1.5px solid #B5B5B5"></div>
+                  <div style="height: 50px; border: 1.5px solid #B5B5B5"></div>
+                </div>
+                <div style="width: 180px; height: 380px; border: 2px solid #9E9E9E; border-radius: 26px; box-sizing: border-box; padding: 18px 14px; display: flex; flex-direction: column; gap: 10px; background: #FFFFFF">
+                  <div style="height: 12px; width: 55%; background: #D4D4D4"></div>
+                  <div style="height: 130px; width: 130px; align-self: center; border-radius: 50%; border: 1.5px dashed #B5B5B5; display: flex; align-items: center; justify-content: center">progreso</div>
+                  <div style="margin-top: auto; height: 40px; border: 2px solid #9E9E9E; display: flex; align-items: center; justify-content: center">[ secundario ]</div>
+                </div>
+              </div>
+              <div style="position: absolute; inset: 0; clip-path: {{uiClip}}; display: flex; align-items: center; justify-content: center; gap: 28px; background: #26262C">
+                <div style="width: 180px; height: 380px; border-radius: 26px; box-sizing: border-box; padding: 18px 14px; display: flex; flex-direction: column; gap: 10px; background: #FFFFFF">
+                  <div style="height: 12px; width: 60%; border-radius: 6px; background: #1A1A1E"></div>
+                  <div style="height: 104px; border-radius: 14px; background: #FDEBE3"></div>
+                  <div style="height: 10px; width: 85%; border-radius: 5px; background: #D9D9D4"></div>
+                  <div style="height: 10px; width: 65%; border-radius: 5px; background: #D9D9D4"></div>
+                  <div style="margin-top: auto; height: 40px; border-radius: 12px; background: #D9480F"></div>
+                </div>
+                <div style="width: 180px; height: 380px; border-radius: 26px; box-sizing: border-box; padding: 18px 14px; display: flex; flex-direction: column; gap: 10px; background: #FFFFFF">
+                  <div style="height: 12px; width: 45%; border-radius: 6px; background: #1A1A1E"></div>
+                  <div style="height: 50px; border-radius: 12px; background: #F2F2F0"></div>
+                  <div style="height: 50px; border-radius: 12px; background: #FDEBE3; outline: 2px solid #D9480F"></div>
+                  <div style="height: 50px; border-radius: 12px; background: #F2F2F0"></div>
+                  <div style="height: 50px; border-radius: 12px; background: #F2F2F0"></div>
+                </div>
+                <div style="width: 180px; height: 380px; border-radius: 26px; box-sizing: border-box; padding: 18px 14px; display: flex; flex-direction: column; gap: 10px; background: #FFFFFF">
+                  <div style="height: 12px; width: 55%; border-radius: 6px; background: #1A1A1E"></div>
+                  <div style="height: 130px; width: 130px; align-self: center; border-radius: 50%; border: 14px solid #FDEBE3; border-top-color: #D9480F; border-right-color: #D9480F; box-sizing: border-box"></div>
+                  <div style="margin-top: auto; height: 40px; border-radius: 12px; border: 1.5px solid #1A1A1E"></div>
+                </div>
+              </div>
+              <div style="position: absolute; top: 0; bottom: 0; left: {{dividerLeft}}; width: 2px; background: #D9480F; pointer-events: none">
+                <div style="position: absolute; top: 16px; left: -44px; width: 88px; padding: 5px 0; border-radius: 999px; background: #D9480F; color: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-align: center">UI ↔ WIRE</div>
+              </div>
+              <div style="position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); display: flex; align-items: center; gap: 12px; padding: 10px 18px; border-radius: 999px; background: #141417; color: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 12px">
+                <label for="fidx">Fidelidad</label>
+                <input id="fidx" type="range" min="0" max="100" value="{{fid}}" onChange="{{onFid}}" style="width: 200px">
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px">
+              <svg width="44" height="22" viewBox="0 0 44 22" fill="none"><path d="M2 18 C 14 4, 28 2, 40 10 M40 10 L 31 9 M40 10 L 35 17" stroke="#F5A97F" stroke-width="2" stroke-linecap="round"></path></svg>
+              <span style="font-family: 'Caveat', cursive; font-size: 24px; color: #F5A97F">N.B. este frame está vivo: arrastra, compara, rompe cosas.</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 16px; border: 1px solid #2E2E35; border-radius: 10px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px">
+            <div style="display: grid; grid-template-columns: 100px repeat(5, minmax(0, 1fr)); font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #A1A1AA">
+              <span></span><span>[AÑO 1]</span><span>[AÑO 2]</span><span>[AÑO 3]</span><span>[AÑO 4]</span><span>[AÑO 5]</span>
+            </div>
+            <div style="display: grid; grid-template-columns: 100px minmax(0, 1fr); align-items: center; font-size: 14px">
+              <span>Producto</span>
+              <div style="position: relative; height: 18px; border-bottom: 1px dashed #3A3A42">
+                <sc-for list="{{marks}}" as="m" hint-placeholder-count="4">
+                  <span style="position: absolute; top: 3px; left: {{m.left}}; width: 12px; height: 12px; transform: rotate(45deg); background: {{m.color}}"></span>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; border-top: 1px solid #2E2E35">
+            <sc-for list="{{cases}}" as="k" hint-placeholder-count="4">
+              <button type="button" class="row" onClick="{{k.pick}}" style="font-family: inherit; text-align: left; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 20px; align-items: center; padding: 20px 8px; background: {{k.bg}}; color: #F2F2F0; border: none; border-bottom: 1px solid #2E2E35">
+                <span style="display: flex; flex-direction: column; gap: 6px">
+                  <span style="font-weight: 700; font-size: 18px">{{k.name}}</span>
+                  <span style="font-size: 15px; color: #C4C4CC">{{k.line}}</span>
+                </span>
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 4px 9px; border-radius: 999px; background: {{k.tagBg}}; color: #141417">{{k.tag}}</span>
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #A1A1AA">{{k.date}}</span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <!-- FRAME 03 · EXPLORACIONES -->
+      <section id="f03" style="display: flex; flex-direction: column; gap: 8px">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8A8A92">Frame 03 — Exploraciones</div>
+        <div style="background: #FFFFFF; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 56px clamp(24px, 5vw, 72px); display: flex; flex-direction: column; gap: 18px">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #6B6B74">◇ FRAME 03 · DESCARTES Y PRUEBAS</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5C5C66">— Estudios, retos, ideas sueltas</div>
+          <h2 style="margin: 0; font-size: 48px; line-height: 1; font-weight: 700; letter-spacing: -0.03em">Exploraciones</h2>
+          <p style="margin: 0; max-width: 720px; font-size: 18px; line-height: 1.55; color: #2A2A30">Cosas pequeñas hechas por el camino: una interacción estudiada pixel a pixel, un rediseño de algo que me molestaba, una idea que no me dejaba dormir.</p>
+          <div style="margin-top: 12px; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px">
+            <sc-for list="{{experiments}}" as="x" hint-placeholder-count="8">
+              <a href="#" class="cell" style="text-decoration: none; position: relative; height: 190px; background: {{x.bg}}; color: {{x.fg}}; display: flex; align-items: flex-end; justify-content: space-between; padding: 12px; box-sizing: border-box; font-family: 'IBM Plex Mono', monospace; font-size: 12px">
+                <span>{{x.n}}</span><span>Ver ↗</span>
+              </a>
+            </sc-for>
+          </div>
+          <div style="font-size: 15px; color: #5C5C66">Esta es la lista corta. Hay más en [Dribbble / Behance / Instagram].</div>
+        </div>
+      </section>
+
+      <!-- FRAME 04 · FUERA DEL LIENZO (polaroids) -->
+      <section id="f04" style="display: flex; flex-direction: column; gap: 8px">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8A8A92">Frame 04 — Fuera del lienzo</div>
+        <div style="background: #FFFFFF; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 56px clamp(24px, 5vw, 72px) 40px; display: flex; flex-direction: column; gap: 18px">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #6B6B74">◇ FRAME 04 · CAPA OCULTA</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #5C5C66">— ¿Sigues aquí?</div>
+          <h2 style="margin: 0; font-size: 48px; line-height: 1; font-weight: 700; letter-spacing: -0.03em">Cuando no estoy diseñando</h2>
+          <div style="position: relative; height: 980px; margin-top: 8px">
+            <div style="position: relative; z-index: 2; max-width: 520px; display: flex; flex-direction: column">
+              <sc-for list="{{hobbies}}" as="h" hint-placeholder-count="6">
+                <div style="display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 10px; padding: 12px 0; border-bottom: 1px solid #ECECE8; font-size: 17px; line-height: 1.45; background: rgba(255,255,255,0.92)">
+                  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #D9480F; padding-top: 4px">{{h.n}}</span>
+                  <span>{{h.text}}</span>
+                </div>
+              </sc-for>
+            </div>
+            <sc-for list="{{polaroids}}" as="p" hint-placeholder-count="14">
+              <div class="pola" style="position: absolute; left: {{p.left}}; top: {{p.top}}; transform: {{p.rot}}; width: 168px; padding: 10px 10px 8px; background: #FFFFFF; box-shadow: 0 8px 22px rgba(0,0,0,0.14); display: flex; flex-direction: column; gap: 6px; z-index: 1">
+                <div style="height: 140px; background: {{p.bg}}; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6B6B74">[FOTO]</div>
+                <div style="font-family: 'Caveat', cursive; font-size: 20px; line-height: 1; color: #2A2A30">{{p.caption}}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <!-- FRAME 05 · CONTACTO (plano) + cajetín -->
+      <section id="f05" style="display: flex; flex-direction: column; gap: 8px">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #8A8A92">Frame 05 — Contacto</div>
+        <div style="background-color: #C2410C; background-image: linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px); background-size: 24px 24px; color: #FFFFFF; padding: 56px clamp(24px, 5vw, 72px); display: flex; flex-direction: column; gap: 40px">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em">◇ FRAME 05 · CONTACTO</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-end; justify-content: space-between">
+            <div style="display: flex; flex-direction: column; gap: 14px">
+              <h2 style="margin: 0; font-size: clamp(56px, 8vw, 104px); line-height: 0.9; font-weight: 700; letter-spacing: -0.045em">Hablemos.</h2>
+              <p style="margin: 0; font-size: 19px; max-width: 440px; line-height: 1.45">Diseño, research o una buena idea a medio hacer. Me hace ilusión saber de ti.</p>
+              <a href="#" style="align-self: flex-start; text-decoration: none; background: #FFFFFF; color: #C2410C; padding: 14px 22px; border-radius: 10px; font-weight: 700">Escríbeme</a>
+            </div>
+            <span style="font-family: 'Caveat', cursive; font-size: 28px">respondo rápido, prometido ↗</span>
+          </div>
+
+          <!-- Cajetín (title block) -->
+          <div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); border: 1px solid rgba(255,255,255,0.55); font-family: 'IBM Plex Mono', monospace; font-size: 12px">
+            <div style="display: flex; flex-direction: column; border-right: 1px solid rgba(255,255,255,0.55)">
+              <div style="display: grid; grid-template-columns: 70px minmax(0, 1fr); padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.55); opacity: 0.8"><span>REV</span><span>DESCRIPCIÓN</span></div>
+              <div style="display: grid; grid-template-columns: 70px minmax(0, 1fr); padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.3)"><span>v1.0</span><span>Frames, minimapa, polaroids, este cajetín</span></div>
+              <div style="display: grid; grid-template-columns: 70px minmax(0, 1fr); padding: 8px 12px"><span>v0.1</span><span>Primer boceto, cuatro metáforas descartadas</span></div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr))">
+              <div style="padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.55); grid-column: span 2"><div style="opacity: 0.8">PROYECTO</div><div>albert.fig · un archivo de diseño</div></div>
+              <div style="padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.55); border-right: 1px solid rgba(255,255,255,0.55)"><div style="opacity: 0.8">DIBUJADO POR</div><div>Albert</div></div>
+              <div style="padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.55)"><div style="opacity: 0.8">ESCALA</div><div>1:1</div></div>
+              <div style="padding: 8px 12px; border-right: 1px solid rgba(255,255,255,0.55)"><div style="opacity: 0.8">FECHA</div><div>Oct 2026</div></div>
+              <div style="padding: 8px 12px"><div style="opacity: 0.8">HOJA</div><div>05 de 05</div></div>
+            </div>
+          </div>
+          <div style="text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 11px; opacity: 0.85">© 2026 Albert · hecho frame a frame</div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===================== MINIMAPA LATERAL ===================== -->
+    <aside class="rail" style="position: sticky; top: 92px; width: 168px; flex-shrink: 0; opacity: {{railOpacity}}; pointer-events: {{railEvents}}; display: flex; flex-direction: column; gap: 14px; font-family: 'IBM Plex Mono', monospace; font-size: 11px">
+      <div style="color: #6B6B74; letter-spacing: 0.08em">VISTA COMPLETA</div>
+      <div style="position: relative; height: 380px; padding: 6px; box-sizing: border-box; background: #FFFFFF; border: 1px solid #E2E2DE; display: flex; flex-direction: column; gap: 4px">
+        <sc-for list="{{mapBlocks}}" as="b" hint-placeholder-count="5">
+          <a href="{{b.href}}" aria-label="{{b.label}}" style="display: flex; flex-direction: column; gap: 3px; padding: 6px; box-sizing: border-box; flex: {{b.flex}}; background: {{b.bg}}; outline: {{b.ring}}; text-decoration: none">
+            <span style="height: 3px; width: 50%; background: {{b.ink}}"></span>
+            <span style="height: 2px; width: 80%; background: {{b.ink}}; opacity: 0.5"></span>
+            <span style="height: 2px; width: 65%; background: {{b.ink}}; opacity: 0.5"></span>
+          </a>
+        </sc-for>
+        <div style="position: absolute; left: 2px; right: 2px; top: {{viewTop}}; height: 18%; border: 1.5px solid #D9480F; background: rgba(217,72,15,0.08); pointer-events: none"></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <sc-for list="{{mapBlocks}}" as="b" hint-placeholder-count="5">
+          <a href="{{b.href}}" style="display: flex; gap: 8px; align-items: center; padding: 6px 4px; text-decoration: none; color: {{b.listColor}}; font-weight: {{b.weight}}">
+            <span style="width: 7px; height: 7px; border-radius: 50%; background: {{b.dot}}"></span>{{b.label}}
+          </a>
+        </sc-for>
+      </div>
+      <div style="color: #6B6B74">{{progressLabel}}</div>
+    </aside>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5600}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { fid: 50, active: 0, now: new Date(), section: 0, prog: 0, scrolling: false };
+  }
+  componentDidMount() {
+    this.timer = setInterval(() => this.setState({ now: new Date() }), 30000);
+    this.onScroll = (e) => {
+      const t = (e && e.target && e.target !== document && e.target.scrollHeight) ? e.target : (document.scrollingElement || document.documentElement);
+      const max = t.scrollHeight - t.clientHeight;
+      const prog = max > 0 ? Math.min(1, Math.max(0, t.scrollTop / max)) : 0;
+      const ids = ['f01', 'f02', 'f03', 'f04', 'f05'];
+      let s = 0;
+      ids.forEach((id, i) => {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top < window.innerHeight * 0.45) s = i;
+      });
+      if (s !== this.state.section || Math.abs(prog - this.state.prog) > 0.005 || !this.state.scrolling) this.setState({ section: s, prog: prog, scrolling: true });
+      clearTimeout(this.hideT);
+      this.hideT = setTimeout(() => this.setState({ scrolling: false }), 1200);
+    };
+    document.addEventListener('scroll', this.onScroll, { capture: true, passive: true });
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    clearTimeout(this.hideT);
+    document.removeEventListener('scroll', this.onScroll, { capture: true });
+  }
+  renderVals() {
+    const fid = this.state.fid;
+    const active = this.state.active;
+    const section = this.state.section;
+    let clock = '';
+    try { clock = this.state.now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' }); } catch (e) { clock = ''; }
+    const caseData = [
+      { name: '[PROYECTO 01]', line: '[Qué problema resolviste, en una línea]', tag: 'CASO COMPLETO', date: '[AÑO]', left: '12%' },
+      { name: '[PROYECTO 02]', line: '[Qué problema resolviste, en una línea]', tag: 'CASO COMPLETO', date: '[AÑO]', left: '38%' },
+      { name: '[PROYECTO 03]', line: '[Qué problema resolviste, en una línea]', tag: 'EN REDACCIÓN', date: '[AÑO]', left: '62%' },
+      { name: '[PROYECTO 04]', line: '[Qué problema resolviste, en una línea]', tag: 'EN REDACCIÓN', date: '[AÑO]', left: '86%' }
+    ];
+    const cellColors = [
+      { bg: '#1A1A1E', fg: '#FFFFFF' }, { bg: '#FDEBE3', fg: '#1A1A1E' }, { bg: '#C2410C', fg: '#FFFFFF' },
+      { bg: '#E2E2DE', fg: '#1A1A1E' }, { bg: '#26262C', fg: '#FFFFFF' }, { bg: '#F2F2F0', fg: '#1A1A1E' }
+    ];
+    const expBg = ['#E2E2DE', '#1A1A1E', '#FDEBE3', '#F2F2F0', '#C2410C', '#26262C', '#ECECE8', '#FDEBE3'];
+    const dark = ['#1A1A1E', '#C2410C', '#26262C'];
+    const pos = [
+      [560, 0, -4], [760, 30, 3], [960, 0, -2], [620, 220, 5], [820, 250, -3], [1000, 230, 2],
+      [0, 420, -5], [200, 450, 3], [400, 430, -2], [600, 470, 4], [800, 480, -4], [1000, 460, 3],
+      [100, 690, 2], [320, 700, -3]
+    ];
+    const caps = ['[pie de foto]', '[un sitio]', '[una comida]', '[un plan]', '[alguien]', '[un viaje]', '[un domingo]', '[una afición]', '[un momento]', '[un lugar]', '[la familia]', '[un recuerdo]', '[un deporte]', '[un atardecer]'];
+    const tones = ['#E2E2DE', '#D9D9D4', '#ECECE8', '#FDEBE3'];
+    const blocks = [
+      { href: '#f01', label: '01 Identidad', flex: '2.2', bg: '#FFFFFF', ink: '#1A1A1E' },
+      { href: '#f02', label: '02 Casos', flex: '3', bg: '#141417', ink: '#F2F2F0' },
+      { href: '#f03', label: '03 Exploraciones', flex: '1.6', bg: '#FFFFFF', ink: '#1A1A1E' },
+      { href: '#f04', label: '04 Fuera del lienzo', flex: '2.4', bg: '#FFFFFF', ink: '#1A1A1E' },
+      { href: '#f05', label: '05 Contacto', flex: '1.4', bg: '#C2410C', ink: '#FFFFFF' }
+    ];
+    return {
+      clock: clock,
+      fid: fid,
+      uiClip: 'inset(0 ' + (100 - fid) + '% 0 0)',
+      dividerLeft: fid + '%',
+      onFid: (e) => this.setState({ fid: Number(e.target.value) }),
+      activeName: caseData[active].name,
+      cells: cellColors.map((c, i) => ({ n: '0' + (i + 1), name: '[PROYECTO 0' + (i + 1) + ']', bg: c.bg, fg: c.fg })),
+      marks: caseData.map((k, i) => ({ left: k.left, color: i === active ? '#D9480F' : '#6B6B74' })),
+      cases: caseData.map((k, i) => ({
+        name: k.name, line: k.line, tag: k.tag, date: k.date,
+        bg: i === active ? '#26262C' : 'transparent',
+        tagBg: k.tag === 'CASO COMPLETO' ? '#F5A97F' : '#D4D4D8',
+        pick: () => this.setState({ active: i, fid: 50 })
+      })),
+      experiments: expBg.map((b, i) => ({ n: '0' + (i + 1), bg: b, fg: dark.indexOf(b) >= 0 ? '#FFFFFF' : '#1A1A1E' })),
+      hobbies: [1, 2, 3, 4, 5, 6].map((n) => ({ n: '0' + n, text: '[AFICIÓN ' + n + '] — una frase corta que suene a ti.' })),
+      polaroids: pos.map((p, i) => ({ left: (p[0] / 1240 * 100).toFixed(1) + '%', top: p[1] + 'px', rot: 'rotate(' + p[2] + 'deg)', caption: caps[i], bg: tones[i % tones.length] })),
+      mapBlocks: blocks.map((b, i) => ({
+        href: b.href, label: b.label, flex: b.flex, bg: b.bg, ink: b.ink,
+        ring: i === section ? '2px solid #D9480F' : '1px solid #E2E2DE',
+        dot: i === section ? '#D9480F' : '#C9C9C4',
+        listColor: i === section ? '#1A1A1E' : '#6B6B74',
+        weight: i === section ? '600' : '400'
+      })),
+      viewTop: (this.state.prog * 82) + '%',
+      railOpacity: this.state.scrolling ? '1' : '0',
+      railEvents: this.state.scrolling ? 'auto' : 'none',
+      progressLabel: 'Hoja 0' + (section + 1) + ' de 05 · ' + Math.round(this.state.prog * 100) + '%'
+    };
+  }
+}
+</script>
+</body>
+</html>

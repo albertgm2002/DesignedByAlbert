@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Híbrido — Hero</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#1A1A1E}a:hover{color:#D9480F}
+@keyframes curA{0%{transform:translate(0,0)}35%{transform:translate(200px,50px)}65%{transform:translate(140px,160px)}100%{transform:translate(0,0)}}
+@keyframes curB{0%{transform:translate(0,0)}40%{transform:translate(-170px,-60px)}70%{transform:translate(-70px,80px)}100%{transform:translate(0,0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.cur-a{animation:curA 9s ease-in-out infinite}
+.cur-b{animation:curB 11s ease-in-out infinite}
+.live{animation:blink 1.6s ease-in-out infinite}
+.frame{transition:transform .2s ease, box-shadow .2s ease}
+.frame:hover{transform:translateY(-4px);box-shadow:0 0 0 2px #D9480F, 0 18px 40px rgba(0,0,0,0.12)}
+@media (prefers-reduced-motion: reduce){.cur-a,.cur-b,.live{animation:none}.frame{transition:none}}
+</style>
+</helmet>
+<div style="width: 100%; height: 900px; display: flex; flex-direction: column; font-family: 'Instrument Sans', sans-serif; color: #1A1A1E; background: #F2F2F0; overflow: hidden">
+
+  <header style="height: 52px; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; background: #FFFFFF; border-bottom: 1px solid #E2E2DE">
+    <div style="display: flex; align-items: center; gap: 14px; font-size: 14px">
+      <div style="width: 26px; height: 26px; border-radius: 7px; background: #D9480F; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">A</div>
+      <span style="color: #5C5C66">Portfolio /</span><span style="font-weight: 600">albert.fig</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 12px; font-size: 13px">
+      <div style="display: flex">
+        <div style="width: 28px; height: 28px; border-radius: 50%; background: #2563EB; border: 2px solid #FFFFFF; color: #FFFFFF; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center">PM</div>
+        <div style="width: 28px; height: 28px; border-radius: 50%; background: #0F766E; border: 2px solid #FFFFFF; margin-left: -8px; color: #FFFFFF; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center">DV</div>
+        <div style="width: 28px; height: 28px; border-radius: 50%; background: #1A1A1E; border: 2px solid #FFFFFF; margin-left: -8px; color: #FFFFFF; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center">TÚ</div>
+      </div>
+      <a href="#" style="text-decoration: none; background: #D9480F; color: #FFFFFF; padding: 9px 16px; border-radius: 8px; font-weight: 600">Contactar</a>
+    </div>
+  </header>
+
+  <div style="flex: 1; display: flex; min-height: 0">
+    <aside style="width: 240px; flex-shrink: 0; background: #FFFFFF; border-right: 1px solid #E2E2DE; padding: 16px 0; font-size: 14px; display: flex; flex-direction: column; gap: 2px">
+      <div style="padding: 0 18px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #6B6B74">CAPAS</div>
+      <a href="#" style="text-decoration: none; padding: 9px 18px; background: #FDEBE3; color: #9A3412; font-weight: 600">▾ ▢ Hero</a>
+      <div style="padding: 7px 18px 7px 42px; color: #5C5C66">T  Nombre</div>
+      <div style="padding: 7px 18px 7px 42px; color: #5C5C66">T  Rol</div>
+      <div style="padding: 9px 18px">▾ ▢ Proyectos</div>
+      <a href="Proyecto.dc.html" style="text-decoration: none; padding: 7px 18px 7px 42px; color: #3A3A42">▢  [PROYECTO 01] ↗</a>
+      <a href="Proyecto.dc.html" style="text-decoration: none; padding: 7px 18px 7px 42px; color: #3A3A42">▢  [PROYECTO 02] ↗</a>
+      <a href="Proyecto.dc.html" style="text-decoration: none; padding: 7px 18px 7px 42px; color: #3A3A42">▢  [PROYECTO 03] ↗</a>
+      <a href="#" style="text-decoration: none; padding: 9px 18px">▸ ▢ Sobre mí</a>
+      <a href="#" style="text-decoration: none; padding: 9px 18px">▸ ▢ Contacto</a>
+      <div style="padding: 9px 18px; color: #6B6B74; font-style: italic">◌ capa oculta</div>
+    </aside>
+
+    <main style="flex: 1; min-width: 0; position: relative; background-color: #F2F2F0; background-image: radial-gradient(#CFCFCA 1.2px, transparent 1.2px); background-size: 22px 22px">
+      <!-- Hero frame -->
+      <div style="position: absolute; left: 56px; top: 52px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6B6B74">Hero — 1440</div>
+      <div style="position: absolute; left: 56px; top: 74px; width: 600px; height: 540px; background: #FFFFFF; box-shadow: 0 1px 3px rgba(0,0,0,0.08); box-sizing: border-box; padding: 52px; display: flex; flex-direction: column; justify-content: flex-end; gap: 16px">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #6B6B74">Diseñador UX/UI · España</div>
+        <div style="position: relative; align-self: flex-start">
+          <h1 style="margin: 0; font-size: 128px; line-height: 0.9; font-weight: 700; letter-spacing: -0.045em">Albert</h1>
+          <div style="position: absolute; inset: -8px; border: 1.5px solid #D9480F"></div>
+          <div style="position: absolute; left: -12px; top: -12px; width: 8px; height: 8px; background: #FFFFFF; border: 1.5px solid #D9480F"></div>
+          <div style="position: absolute; right: -12px; top: -12px; width: 8px; height: 8px; background: #FFFFFF; border: 1.5px solid #D9480F"></div>
+          <div style="position: absolute; left: -12px; bottom: -12px; width: 8px; height: 8px; background: #FFFFFF; border: 1.5px solid #D9480F"></div>
+          <div style="position: absolute; right: -12px; bottom: -12px; width: 8px; height: 8px; background: #FFFFFF; border: 1.5px solid #D9480F"></div>
+        </div>
+        <p style="margin: 22px 0 0; font-size: 21px; line-height: 1.35; color: #3A3A42; max-width: 440px">Diseño productos digitales desde el research hasta el último pixel. Abre un proyecto para ver cómo.</p>
+      </div>
+
+      <!-- Frames de proyecto (clicables) -->
+      <div style="position: absolute; left: 720px; top: 52px; display: flex; flex-direction: column; gap: 22px; width: 300px">
+        <a href="Proyecto.dc.html" style="text-decoration: none; display: flex; flex-direction: column; gap: 6px">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6B6B74">[PROYECTO 01] ↗</span>
+          <span class="frame" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 160px; background: #1A1A1E">
+            <span style="width: 64px; height: 120px; border-radius: 12px; background: #3A3A42"></span>
+            <span style="width: 64px; height: 120px; border-radius: 12px; background: #D9480F"></span>
+            <span style="width: 64px; height: 120px; border-radius: 12px; background: #3A3A42"></span>
+          </span>
+        </a>
+        <a href="Proyecto.dc.html" style="text-decoration: none; display: flex; flex-direction: column; gap: 6px">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6B6B74">[PROYECTO 02] ↗</span>
+          <span class="frame" style="display: flex; flex-direction: column; gap: 8px; height: 150px; box-sizing: border-box; padding: 18px; background: #FDEBE3">
+            <span style="height: 12px; width: 50%; background: #9A3412"></span>
+            <span style="flex: 1; background: #FFFFFF"></span>
+          </span>
+        </a>
+        <a href="Proyecto.dc.html" style="text-decoration: none; display: flex; flex-direction: column; gap: 6px">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #6B6B74">[PROYECTO 03] ↗</span>
+          <span class="frame" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; height: 120px; box-sizing: border-box; padding: 14px; background: #FFFFFF">
+            <span style="background: #E2E2DE"></span><span style="background: #E2E2DE"></span><span style="background: #D9480F"></span>
+          </span>
+        </a>
+      </div>
+
+      <!-- Comentario -->
+      <div style="position: absolute; left: 470px; top: 110px; display: flex; gap: 8px; align-items: flex-start">
+        <div style="width: 30px; height: 30px; border-radius: 50% 50% 50% 0; background: #2563EB; color: #FFFFFF; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center">PM</div>
+        <div style="background: #FFFFFF; border-radius: 10px; padding: 10px 12px; font-size: 13px; line-height: 1.4; width: 200px; box-shadow: 0 6px 20px rgba(0,0,0,0.12)">¿Esto lo hizo él solo?<br><span style="color: #5C5C66">→ Sí, del research a la UI.</span></div>
+      </div>
+
+      <div class="cur-a" style="position: absolute; left: 260px; top: 640px; pointer-events: none">
+        <svg width="18" height="20" viewBox="0 0 18 20"><path d="M1 1 L1 17 L5.5 12.5 L9 19 L11.5 18 L8 11.5 L14 11.5 Z" fill="#2563EB" stroke="#FFFFFF" stroke-width="1.5" stroke-linejoin="round"></path></svg>
+        <div style="margin: 2px 0 0 14px; background: #2563EB; color: #FFFFFF; font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 6px; white-space: nowrap">Laura · PM</div>
+      </div>
+      <div class="cur-b" style="position: absolute; left: 980px; top: 560px; pointer-events: none">
+        <svg width="18" height="20" viewBox="0 0 18 20"><path d="M1 1 L1 17 L5.5 12.5 L9 19 L11.5 18 L8 11.5 L14 11.5 Z" fill="#0F766E" stroke="#FFFFFF" stroke-width="1.5" stroke-linejoin="round"></path></svg>
+        <div style="margin: 2px 0 0 14px; background: #0F766E; color: #FFFFFF; font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 6px; white-space: nowrap">Dani · Dev</div>
+      </div>
+
+      <div style="position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); display: flex; gap: 6px; align-items: center; background: #1A1A1E; color: #FFFFFF; padding: 8px 10px; border-radius: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; white-space: nowrap">
+        <span style="padding: 6px 10px; border-radius: 7px; background: #D9480F">V Mover</span>
+        <span style="padding: 6px 10px">F Frame</span>
+        <span style="padding: 6px 10px">C Comentar</span>
+        <span style="padding: 6px 10px; border-left: 1px solid #3A3A42">Clic en un proyecto para entrar</span>
+      </div>
+    </main>
+
+    <aside style="width: 250px; flex-shrink: 0; background: #FFFFFF; border-left: 1px solid #E2E2DE; padding: 16px 18px; font-size: 13px; display: flex; flex-direction: column; gap: 18px">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #6B6B74">PROPIEDADES · ALBERT</div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="display: flex; justify-content: space-between"><span style="color: #6B6B74">Rol</span><span style="font-weight: 600">UX/UI Designer</span></div>
+        <div style="display: flex; justify-content: space-between"><span style="color: #6B6B74">Base</span><span style="font-weight: 600">España</span></div>
+        <div style="display: flex; justify-content: space-between"><span style="color: #6B6B74">Idiomas</span><span style="font-weight: 600">ES · CA · EN</span></div>
+        <div style="display: flex; justify-content: space-between"><span style="color: #6B6B74">Estado</span><span style="font-weight: 600; color: #15803D"><span class="live">●</span> Disponible</span></div>
+      </div>
+      <div style="border-top: 1px solid #ECECE8"></div>
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #6B6B74">HABILIDADES</div>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px">
+        <span style="padding: 5px 9px; border-radius: 6px; background: #F2F2F0">Research</span>
+        <span style="padding: 5px 9px; border-radius: 6px; background: #F2F2F0">Arquitectura</span>
+        <span style="padding: 5px 9px; border-radius: 6px; background: #F2F2F0">Prototipado</span>
+        <span style="padding: 5px 9px; border-radius: 6px; background: #F2F2F0">UI</span>
+        <span style="padding: 5px 9px; border-radius: 6px; background: #F2F2F0">Design systems</span>
+      </div>
+      <div style="border-top: 1px solid #ECECE8"></div>
+      <a href="#" style="text-decoration: none; text-align: center; border: 1.5px solid #1A1A1E; border-radius: 8px; padding: 10px; font-weight: 600">CV.pdf ↓</a>
+    </aside>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

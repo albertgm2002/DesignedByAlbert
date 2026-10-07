@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proceso — albert.fig</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Architects+Daughter&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#16181D}a:hover{color:#1D4ED8}
+.tbtn:hover{background:#F1F4FB}
+.mnote{position:absolute;width:200px;font-family:'Architects Daughter','Bradley Hand',cursive;color:#5C6470;font-size:14.5px;line-height:1.55;letter-spacing:.01em;pointer-events:none;display:flex;flex-direction:column;gap:1px;z-index:3}
+.mnote b{color:#5B8CFF;font-weight:400;letter-spacing:.06em;font-size:16px}
+.mnote b,.mnote span,.mnote svg{filter:url(#graphite-bold)}
+.mnote b,.mnote span{opacity:0;translate:0 4px;transition:opacity .5s ease, translate .5s ease}
+.mnote span{transition-delay:.15s}
+.mnote.on b,.mnote.on span{opacity:1;translate:0 0}
+.mnote svg{margin-top:6px;overflow:visible;clip-path:inset(-4px 100% -4px -4px);transition:clip-path 1.2s cubic-bezier(.4,0,.2,1) .45s}
+.mnote.rtl svg{clip-path:inset(-4px -4px -4px 100%)}
+.mnote.on svg{clip-path:inset(-4px -4px -4px -4px)}
+.mnote path{stroke:#5B8CFF;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.mnote path.d{stroke-dasharray:5 5}
+.mnote.light b{color:#93B4FF}.mnote.light span{color:#C3C8D4}.mnote.light path{stroke:#93B4FF}
+@media (max-width: 1320px){.mnote{display:none}}
+.pin{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:#2563EB;color:#FFFFFF;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px rgba(37,99,235,0.25);opacity:0;scale:.4;transition:opacity .35s ease, scale .35s cubic-bezier(.2,1.4,.4,1)}
+.on .pin{opacity:1;scale:1}
+.bld{opacity:0;translate:0 16px;transition:opacity .55s ease, translate .55s ease}
+.bld.on{opacity:1;translate:0 0}
+.sticky{font-family:'Architects Daughter',cursive;filter:url(#graphite-bold)}
+.tab[aria-pressed="true"]{background:#16181D;color:#FFFFFF;border-color:#16181D}
+.building [data-build]:not(.built){opacity:0 !important}
+.building [data-build].built{animation:builtIn .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes builtIn{from{opacity:0;filter:blur(3px)}to{opacity:1;filter:none}}
+.building{background-color:#2563EB !important;background-image:none !important}
+.building header{background:transparent !important;border-bottom:1px dashed rgba(255,255,255,0.7) !important}
+.building header *, .building main *{color:#FFFFFF !important;background-color:transparent !important;border-color:rgba(255,255,255,0.75) !important;box-shadow:none !important}
+.building main section > div:not(.mnote){background:transparent !important;outline:1.5px dashed rgba(255,255,255,0.75) !important}
+.building img{filter:brightness(0) invert(1)}
+.building .bld{opacity:1;translate:0 0;transition:none}
+.building .mnote{display:none !important}
+.rendering, .rendering header, .rendering header *, .rendering main, .rendering main *{transition:background-color .9s ease, color .9s ease, border-color .9s ease, outline-color .9s ease, filter .9s ease !important}
+.ibx{position:absolute;border:1.5px solid #FFFFFF;box-sizing:border-box;transform-origin:left top;opacity:0;transform:scale(0.02,0.02);background-image:repeating-linear-gradient(135deg, rgba(255,255,255,0.4) 0 1px, transparent 1px 8px);background-color:rgba(255,255,255,0.08)}
+.ibx.drawn{opacity:1;transform:none;transition:transform .32s cubic-bezier(.2,.8,.2,1), opacity .15s ease}
+.ibx.done{background-color:transparent;background-image:none;border-color:rgba(255,255,255,0.5);border-style:dashed;transition:opacity .6s ease .4s;opacity:0}
+.ibx-tag{position:absolute;left:-1.5px;top:-20px;background:#FFFFFF;color:#1D4ED8;font:500 10px/1.4 'IBM Plex Mono',monospace;padding:2px 6px;white-space:nowrap}
+@media (max-width: 760px){.hide-m{display:none !important}.dec{grid-template-columns:minmax(0,1fr) !important}}
+@media (prefers-reduced-motion: reduce){.bld{opacity:1;translate:0 0;transition:none}.mnote svg{clip-path:none !important;transition:none}.mnote b,.mnote span{opacity:1;translate:0 0;transition:none}.pin{opacity:1;scale:1;transition:none}}
+.rprog{position:absolute;left:0;right:0;bottom:-1px;height:3px;background:transparent;pointer-events:none}
+.rprog-fill{height:100%;background:#2563EB;transform-origin:left center;transition:transform .12s linear;box-shadow:0 0 8px rgba(37,99,235,.45)}
+.dotsbg{position:relative;z-index:0}
+.dotsbg::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(#B9C0CC 1.2px,transparent 1.2px);background-size:22px 22px;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 28%,#000 72%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0%,#000 28%,#000 72%,transparent 100%)}
+@media print{.dotsbg::before{display:none}}
+.building.dotsbg::before{opacity:0}
+.dotsbg::before{transition:opacity .9s ease}
+</style>
+</head>
+<body>
+<template id="dc-template">
+
+<div class="{{rootClass}} dotsbg" style="overflow-x: clip; width: 100%; min-height: 1200px; font-family: 'Instrument Sans', sans-serif; color: #16181D; background-color: #EEF0F3">
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false"><defs>
+    <filter id="graphite-bold" x="-3%" y="-3%" width="106%" height="106%" colorInterpolationFilters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.55 0.55" numOctaves="2" seed="7" result="grain"></feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="grain" scale="2.6" xChannelSelector="R" yChannelSelector="G" result="wavered"></feDisplacementMap>
+      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.8 0.05" result="wear"></feColorMatrix>
+      <feComposite in="wavered" in2="wear" operator="in"></feComposite>
+    </filter>
+  </defs></svg>
+
+  <!-- intro: se construye -->
+  <sc-if value="{{showIntro}}" hint-placeholder-val="{{false}}">
+    <div style="position: fixed; inset: 0; z-index: 100; pointer-events: none; font-family: 'IBM Plex Mono', monospace">
+      <div style="position: absolute; inset: 0; background-color: {{introBg}}; opacity: {{introOpacity}}; transition: background-color .6s ease, opacity .5s ease; background-image: linear-gradient(rgba(255,255,255,0.22) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.22) 1px, transparent 1px), linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px"></div>
+      <sc-for list="{{boxes}}" as="bx" hint-placeholder-count="0">
+        <div class="ibx {{bx.cls}}" style="left: {{bx.left}}; top: {{bx.top}}; width: {{bx.width}}; height: {{bx.height}}"><span class="ibx-tag">{{bx.label}}</span></div>
+      </sc-for>
+      <div style="position: absolute; left: 0; top: 0; transform: {{introCur}}; transition: transform .36s cubic-bezier(.45,0,.2,1), opacity .3s ease; opacity: {{introCurOpacity}}">
+        <svg width="20" height="22" viewBox="0 0 18 20"><path d="M1 1 L1 17 L5.5 12.5 L9 19 L11.5 18 L8 11.5 L14 11.5 Z" fill="#FFFFFF" stroke="#1D4ED8" stroke-width="1.5" stroke-linejoin="round"></path></svg>
+        <div style="margin: 2px 0 0 14px; background: #FFFFFF; color: #1D4ED8; font-family: 'Instrument Sans', sans-serif; font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 6px; white-space: nowrap">Albert</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <header data-build="NAV · PROCESO" style="position: sticky; top: 0; z-index: 30; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; padding: 10px 16px; background: #FFFFFF; border-bottom: 1px solid #E1E4EA">
+    <div style="display: flex; align-items: center; gap: 10px; font-size: 14px">
+      <a href="index.html" class="tbtn" style="text-decoration: none; display: flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px 0 6px; border-radius: 8px; border: 1px solid #E1E4EA">
+        <span style="width: 26px; height: 26px; border-radius: 7px; background: #2563EB; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px">A</span>← albert.fig
+      </a>
+      <span class="hide-m" style="color: #5A6070">/ Proyectos /</span><span style="font-weight: 600">{{cur.name}} · proceso</span>
+      <span class="hide-m" aria-live="off" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #5A6070; font-variant-numeric: tabular-nums">· {{progLabel}}</span>
+    </div>
+    <div style="display: flex; gap: 6px">
+      <sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+        <button type="button" class="tab" aria-pressed="{{t.pressed}}" onClick="{{t.pick}}" style="font-family: inherit; font-size: 13px; cursor: pointer; padding: 8px 12px; border-radius: 8px; border: 1px solid #D3D7DE; background: #FFFFFF; color: #16181D">{{t.name}}</button>
+      </sc-for>
+    </div>
+    <div class="rprog" role="progressbar" aria-label="Progreso de lectura" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{progNum}}"><div class="rprog-fill" style="transform: scaleX({{progScale}})"></div></div>
+  </header>
+
+  <main style="max-width: 1000px; margin: 0 auto; padding: 48px 16px 120px; display: flex; flex-direction: column; gap: 80px">
+
+    <!-- P1 · portada del proceso -->
+    <section id="p1" style="position: relative; display: flex; flex-direction: column; gap: 6px">
+      <div style="font-size: 12px; font-weight: 500; color: #1D4ED8"># Proceso — {{cur.name}}</div>
+      <div class="mnote rtl {{on1}}" style="right: -240px; top: 120px"><b>herramientas</b><span>lo que usé en este proyecto, en orden de uso.</span><svg width="200" height="64" viewBox="0 0 200 64" fill="none"><path class="d" d="M192 12 C 140 4, 72 16, 14 46"></path><path d="M14 46 L 29 45 M14 46 L 20 32"></path></svg></div>
+      <div data-build="FRAME · PORTADA" style="background: #FFFFFF; padding: 48px clamp(24px, 5vw, 64px); display: flex; flex-direction: column; gap: 18px">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #5A6070">◇ PROCESO · DECISIONES DE DISEÑO</div>
+        <h1 data-build="TÍTULO" style="margin: 0; font-size: clamp(48px, 8vw, 96px); line-height: 0.95; font-weight: 700; letter-spacing: -0.045em; align-self: flex-start">{{cur.name}}</h1>
+        <p data-build="COPY · RESUMEN" style="margin: 0; max-width: 620px; font-size: 20px; line-height: 1.45; color: #3A3F4C">{{cur.short}}</p>
+        <div data-build="FICHA" style="display: flex; flex-wrap: wrap; gap: 8px; align-self: flex-start">
+          <sc-for list="{{cur.facts}}" as="f" hint-placeholder-count="4"><span style="display: flex; gap: 6px; align-items: baseline; padding: 6px 10px; border: 1px solid #E1E4EA; border-radius: 999px; font-size: 13px"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #5A6070">{{f.k}}</span>{{f.v}}</span></sc-for>
+        </div>
+        <div data-build="HERRAMIENTAS" style="display: flex; flex-wrap: wrap; gap: 8px; align-self: flex-start">
+          <sc-for list="{{cur.tools}}" as="t" hint-placeholder-count="5"><span style="display: flex; align-items: center; gap: 8px; padding: 6px 10px 6px 6px; border: 1px solid #E1E4EA; border-radius: 8px; font-size: 14px"><span style="min-width: 26px; height: 26px; border-radius: 6px; background: #E6EDFF; color: #1D4ED8; display: flex; align-items: center; justify-content: center; font-family: 'IBM Plex Mono', monospace; font-size: 11px">{{t.k}}</span>{{t.name}}</span></sc-for>
+        </div>
+      </div>
+    </section>
+
+    <!-- P2 · problema → objetivo -->
+    <section id="p2" style="position: relative; display: flex; flex-direction: column; gap: 6px">
+      <div style="font-size: 12px; font-weight: 500; color: #5A6070"># 01 — Problema → objetivo</div>
+      <div class="mnote {{on2}}" style="left: -240px; top: 60px"><b>el punto de partida</b><span>antes de dibujar nada: qué falla y para quién.</span><svg width="200" height="64" viewBox="0 0 200 64" fill="none"><path class="d" d="M8 12 C 60 4, 128 16, 186 46"></path><path d="M186 46 L 171 45 M186 46 L 180 32"></path></svg></div>
+      <div class="bld {{on2}}" style="background: #FFFFFF; padding: 40px clamp(24px, 5vw, 64px); display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; align-items: stretch; position: relative">
+        <div style="border: 1px solid #E1E4EA; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #E5484D">EL PROBLEMA</span><span style="font-size: 17px; line-height: 1.5">{{cur.problem}}</span></div>
+        <div style="border: 1.5px solid #2563EB; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 8px; background: #F5F8FF"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: #1D4ED8">EL OBJETIVO</span><span style="font-size: 17px; line-height: 1.5">{{cur.goal}}</span></div>
+        <div class="mnote {{on2}}" style="left: 50%; top: 8px; width: 60px; margin-left: -30px; align-items: center"><svg width="60" height="30" viewBox="0 0 60 30" fill="none"><path class="d" d="M4 18 C 20 6, 40 6, 54 16"></path><path d="M54 16 L 42 16 M54 16 L 47 6"></path></svg></div>
+      </div>
+    </section>
+
+    <!-- P3 · decisiones, una por pantalla -->
+    <sc-for list="{{cur.decisions}}" as="d" hint-placeholder-count="2">
+      <section id="{{d.id}}" style="position: relative; display: flex; flex-direction: column; gap: 6px">
+        <div style="font-size: 12px; font-weight: 500; color: #5A6070"># {{d.num}} — Pantalla · {{d.screen}}</div>
+        <div class="mnote {{d.side}} {{d.on}}" style="{{d.notePos}}"><b>{{d.noteTitle}}</b><span>{{d.note}}</span><svg width="240" height="70" viewBox="0 0 240 70" fill="none"><path class="d" d="{{d.arrow}}"></path><path d="{{d.head}}"></path></svg></div>
+        <div class="dec {{d.on}}" style="background: #FFFFFF; padding: 40px clamp(24px, 5vw, 64px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; align-items: center">
+          <div style="position: relative; justify-self: center; width: {{d.w}}; aspect-ratio: {{d.ratio}}; border-radius: 26px; border: 8px solid #16181D; background: {{d.bg}}; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: #FFFFFF">
+            <img src="{{d.img}}" alt="" style="width: 34%; image-rendering: pixelated">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; opacity: 0.85">[captura · {{d.screen}}]</span>
+            <sc-for list="{{d.pins}}" as="pn" hint-placeholder-count="3"><span class="pin" style="left: {{pn.x}}; top: {{pn.y}}; transition-delay: {{pn.delay}}">{{pn.n}}</span></sc-for>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px">
+            <span style="font-size: 28px; line-height: 1.1; font-weight: 700; letter-spacing: -0.02em">{{d.title}}</span>
+            <span style="font-size: 17px; line-height: 1.5; color: #3A3F4C">{{d.decision}}</span>
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <sc-for list="{{d.whys}}" as="w" hint-placeholder-count="3">
+                <div style="display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; align-items: start"><span style="width: 24px; height: 24px; border-radius: 50%; background: #2563EB; color: #FFFFFF; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center">{{w.n}}</span><span style="font-size: 15px; line-height: 1.5; color: #2A2E38">{{w.text}}</span></div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-for>
+
+    <!-- P4 · aprendizajes -->
+    <section id="p9" style="position: relative; display: flex; flex-direction: column; gap: 6px">
+      <div style="font-size: 12px; font-weight: 500; color: #5A6070"># Aprendizajes</div>
+      <div class="mnote rtl {{on9}}" style="right: -240px; top: 80px"><b>N.B.</b><span>lo que me llevo al siguiente proyecto.</span><svg width="200" height="64" viewBox="0 0 200 64" fill="none"><path class="d" d="M192 12 C 140 4, 72 16, 14 46"></path><path d="M14 46 L 29 45 M14 46 L 20 32"></path></svg></div>
+      <div class="bld {{on9}}" style="background: #FFFFFF; padding: 48px clamp(24px, 5vw, 64px); display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px">
+        <sc-for list="{{cur.learnedCards}}" as="l" hint-placeholder-count="3">
+          <div class="sticky" style="background: #FFF3B0; color: #3A3200; padding: 20px 18px 26px; transform: rotate({{l.rot}}); box-shadow: 0 12px 26px rgba(0,0,0,0.12); font-size: 19px; line-height: 1.35">{{l.text}}</div>
+        </sc-for>
+      </div>
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 20px">
+        <a href="index.html" style="text-decoration: none; padding: 12px 18px; border-radius: 10px; border: 1px solid #D3D7DE; background: #FFFFFF; font-weight: 600">← Volver al portfolio</a>
+        <button type="button" onClick="{{nextCase}}" style="font-family: inherit; font-size: 15px; cursor: pointer; padding: 12px 18px; border-radius: 10px; border: none; background: #2563EB; color: #FFFFFF; font-weight: 700">Siguiente: {{nextName}} →</button>
+      </div>
+    </section>
+  </main>
+</div>
+</template>
+<div id="dc-root"></div>
+<script src="js/dc-runtime.js"></script>
+<script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    let c = 0;
+    try { c = parseInt(window.localStorage.getItem('albertfig-case') || '0', 10) || 0; } catch (e) {}
+    this.lastGo = null;
+    try { this.lastGo = window.localStorage.getItem('albertfig-proc-go'); } catch (e) {}
+    this.state = { c: Math.max(0, Math.min(2, c)), seen: {}, prog: 0, intro: true, rendering: false, boxes: [], drawn: -1, builtN: 0, phase: 0, curI: -1 };
+  }
+  componentDidMount() {
+    this.onScroll = (e) => {
+      this.checkSeen();
+      const t = (e && e.target && e.target !== document && e.target.scrollHeight) ? e.target : (document.scrollingElement || document.documentElement);
+      const max = t.scrollHeight - t.clientHeight;
+      const prog = max > 0 ? Math.min(1, Math.max(0, t.scrollTop / max)) : 0;
+      if (this.progRaf) return;
+      this.progRaf = requestAnimationFrame(() => { this.progRaf = 0; if (Math.abs(prog - (this.state.prog || 0)) > 0.002) this.setState({ prog: prog }); });
+    };
+    document.addEventListener('scroll', this.onScroll, { capture: true, passive: true });
+    this.goPoll = setInterval(() => {
+      let go = null, c = this.state.c;
+      try { go = window.localStorage.getItem('albertfig-proc-go'); c = parseInt(window.localStorage.getItem('albertfig-case') || '0', 10) || 0; } catch (e) {}
+      if (go && go !== this.lastGo) {
+        this.lastGo = go;
+        this.setState({ c: Math.max(0, Math.min(2, c)) });
+        if (!this.reduce) setTimeout(() => this.startBuild(), 60);
+      }
+    }, 250);
+    let reduce = false;
+    try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+    this.reduce = reduce;
+    if (reduce) { this.setState({ intro: false }); setTimeout(() => this.checkSeen(), 50); return; }
+    this.startBuild();
+  }
+  componentWillUnmount() {
+    document.removeEventListener('scroll', this.onScroll, { capture: true });
+    (this.timers || []).forEach((t) => clearTimeout(t));
+    clearInterval(this.goPoll);
+    cancelAnimationFrame(this.progRaf);
+  }
+  startBuild(tries) {
+    tries = tries || 0;
+    (this.timers || []).forEach((t) => clearTimeout(t));
+    this.timers = [];
+    const T = (fn, ms) => this.timers.push(setTimeout(fn, ms));
+    this.setState({ intro: true, rendering: false, boxes: [], drawn: -1, builtN: 0, phase: 0, curI: -1, seen: {}, prog: 0 });
+    Array.prototype.slice.call(document.querySelectorAll('[data-build]')).forEach((el) => el.classList.remove('built'));
+    T(() => {
+      try { window.scrollTo(0, 0); } catch (e) {}
+      const list = [];
+      Array.prototype.slice.call(document.querySelectorAll('[data-build]')).forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.width < 4 || r.height < 4 || r.top > window.innerHeight - 30 || r.bottom < 0) return;
+        list.push({ el: el, x: r.left, y: r.top, w: r.width, h: Math.min(r.height, window.innerHeight - r.top - 6), label: el.getAttribute('data-build') });
+      });
+      if (list.length < 2 && tries < 40) { T(() => this.startBuild(tries + 1), 300); return; }
+      this.list = list;
+      this.setState({ phase: 1, boxes: list.map((b) => ({ left: b.x + 'px', top: b.y + 'px', width: b.w + 'px', height: b.h + 'px', label: b.label })) });
+      T(() => this.setState({ phase: 2 }), 350);
+      const step = 340;
+      list.forEach((b, i) => {
+        const t0 = 550 + i * step;
+        T(() => this.setState({ curI: i }), t0);
+        T(() => this.setState({ drawn: i }), t0 + 160);
+        T(() => { b.el.classList.add('built'); this.setState({ builtN: i + 1 }); }, t0 + 300);
+      });
+      const tEnd = 550 + list.length * step + 200;
+      T(() => this.setState({ phase: 3, curI: -1 }), tEnd);
+      T(() => {
+        Array.prototype.slice.call(document.querySelectorAll('[data-build]')).forEach((el) => el.classList.add('built'));
+        this.setState({ intro: false, rendering: true });
+        this.checkSeen();
+      }, tEnd + 300);
+      T(() => this.setState({ rendering: false }), tEnd + 1400);
+    }, 250);
+  }
+  checkSeen() {
+    const ids = ['p1', 'p2', 'd0', 'd1', 'd2', 'p9'];
+    const seen = Object.assign({}, this.state.seen);
+    let ch = false;
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el && !seen[id] && el.getBoundingClientRect().top < window.innerHeight * 0.8) { seen[id] = true; ch = true; }
+    });
+    if (ch) this.setState({ seen: seen });
+  }
+  pick(i) {
+    try { window.localStorage.setItem('albertfig-case', String(i)); } catch (e) {}
+    this.setState({ c: i });
+    setTimeout(() => this.startBuild(), 30);
+  }
+  renderVals() {
+    const B = '';
+    const TOOL = { Figma: 'Fi', Photoshop: 'Ps', Illustrator: 'Ai', Jira: 'Ji', Unreal: 'Ur', Miro: 'Mi', OutSystems: 'Os', 'C#': 'C#', JavaScript: 'JS' };
+    const cases = [
+      { name: 'OxySpace', bg: '#1D4ED8', img: 'assets/juego-oxyspace.webp', ratio: '16 / 9', w: '100%',
+        short: 'Un MOBA móvil 3v3 con partidas de menos de cinco minutos, pensado para jugarse con un pulgar.',
+        facts: [['ROL', 'Diseñador de juego y UX/UI'], ['PLATAFORMA', 'Android'], ['AÑO', '2023'], ['EQUIPO', 'Pequeño equipo indie']],
+        tools: ['Figma', 'Photoshop', 'Illustrator', 'Unreal', 'Jira', 'Miro'],
+        problem: 'Los MOBA móviles son divertidos pero abruman: demasiados botones, partidas largas y menús que esconden la acción.',
+        goal: 'Un lobby y un combate que un jugador nuevo entienda en segundos, que se juegue con un pulgar y en menos de cinco minutos.',
+        decisions: [
+          { screen: 'Lobby', title: 'El robot es el protagonista del lobby', decision: 'El robot del jugador va en el centro y todos los menús se van a los bordes.', why: ['Los jugadores abren el juego para ver y mejorar su robot: merece el mayor espacio.', 'Los menús en los bordes dejan el centro limpio y quedan al alcance del pulgar.', 'BATTLE es lo más grande y brillante, abajo a la derecha, donde descansa el pulgar.'], pins: [[50, 48], [10, 20], [86, 82]], noteTitle: 'zona del pulgar', note: 'abajo a la derecha. ahí vive BATTLE.' },
+          { screen: 'Personajes', title: 'Siluetas claras en pixel art', decision: 'Cada clase de robot tiene un contorno único y un color dominante.', why: ['En una pantalla pequeña hay que reconocer a un enemigo en una fracción de segundo.', 'El pixel art es coherente y barato de producir para un equipo pequeño.', 'El color conecta cada robot con su rol: tanque, daño o apoyo.'], pins: [[30, 50], [52, 34], [74, 60]], noteTitle: '0,5 segundos', note: 'lo que tarda un jugador en leer al enemigo.' }
+        ],
+        learned: ['Prueba el lobby pronto con jugadores nuevos: los primeros 10 segundos deciden si se quedan.', 'Una acción principal clara por pantalla funciona mejor que cinco botones iguales.', 'En móvil, las siluetas legibles importan más que el detalle.'] },
+      { name: 'DUELO!', bg: '#A16207', img: 'assets/juego-duelo.webp', ratio: '9 / 17', w: '62%',
+        short: 'Un duelo del oeste para dos jugadores en un solo móvil que se entiende en tres segundos.',
+        facts: [['ROL', 'Diseñador de juego'], ['PLATAFORMA', 'Móvil'], ['AÑO', '2024'], ['EQUIPO', 'Equipo de game jam']],
+        tools: ['Figma', 'Photoshop', 'Illustrator', 'C#'],
+        problem: 'El multijugador local en un solo móvil es raro, y la mayoría de juegos de grupo necesitan explicar muchas reglas.',
+        goal: 'Un duelo que cualquiera entienda en tres segundos: espera la señal y toca antes que tu amigo.',
+        decisions: [
+          { screen: 'Cara a cara', title: 'Dos vaqueros, espalda con espalda', decision: 'Los dos jugadores aparecen espalda con espalda, listos para girarse y disparar.', why: ['La pose explica el juego antes que cualquier texto: es un duelo, va de timing.', 'Los colores cálidos del desierto marcan el ambiente del oeste al instante.', 'Cada mitad de la pantalla es de un jugador: está claro dónde tocar.'], pins: [[50, 44], [50, 12], [50, 76]], noteTitle: 'la pose = las reglas', note: 'si el arte lo explica, el tutorial cabe en una frase.' }
+        ],
+        learned: ['Si el arte explica las reglas, el tutorial cabe en una frase.', 'La tensión nace de la espera, no de añadir mecánicas.', 'Prueba con amigos que nunca juegan.'] },
+      { name: 'SantiaGO!', bg: '#166534', img: 'assets/juego-santiago.webp', ratio: '9 / 17', w: '62%',
+        short: 'Una app que convierte cada etapa del Camino de Santiago en un viaje con aire de juego.',
+        facts: [['ROL', 'Diseñador de producto y UX/UI'], ['PLATAFORMA', 'iOS'], ['AÑO', '2025'], ['EQUIPO', 'Equipo pequeño']],
+        tools: ['Figma', 'Illustrator', 'Photoshop', 'Miro', 'Jira'],
+        problem: 'El Camino es largo y cansado. Los peregrinos pierden la motivación en los días duros y olvidan disfrutar las pequeñas victorias.',
+        goal: 'Que cada etapa premie el progreso y mantenga a los peregrinos en marcha.',
+        decisions: [
+          { screen: 'Inicio', title: 'Un peregrino que camina contigo', decision: 'La pantalla de inicio muestra a tu peregrino sobre la etapa actual, con un gran botón GO.', why: ['Un avatar hace el progreso personal: es tu peregrino el que se acerca a Santiago.', 'Un GO grande: empezar una etapa es un solo toque, incluso con las manos cansadas.', 'Stats y recompensas arriba y abajo, para que el peregrino siga siendo el foco.'], pins: [[50, 46], [50, 84], [50, 12]], noteTitle: 'un solo toque', note: 'incluso con las manos cansadas.' },
+          { screen: 'Avatar', title: 'Estilo pixel cálido y artesanal', decision: 'Una paleta cálida de bosque y un peregrino en pixel art, en lugar de un mapa realista.', why: ['Se siente como una aventura, no como una app de fitness.', 'Es amable para todas las edades, como la gente que hace el Camino.', 'El pixel art se ve bien en pequeño y carga rápido con datos móviles.'], pins: [[50, 40], [28, 66], [72, 70]], noteTitle: 'aventura > fitness', note: 'la paleta cuenta la historia antes que el texto.' }
+        ],
+        learned: ['La motivación viene de recompensas pequeñas y frecuentes, no de un gran objetivo.', 'Diseña para las condiciones reales: sol, sudor y una sola mano libre.', 'Un personaje que importa es la mejor función de retención.'] }
+    ];
+    const ci = this.state.c, c0 = cases[ci];
+    const seen = this.state.seen;
+    const cur = Object.assign({}, c0, {
+      facts: c0.facts.map((f) => ({ k: f[0], v: f[1] })),
+      tools: c0.tools.map((t) => ({ k: TOOL[t] || t.slice(0, 2), name: t })),
+      learnedCards: c0.learned.map((t, i) => ({ text: t, rot: ['-2deg', '1.5deg', '-1deg'][i % 3] })),
+      decisions: c0.decisions.map((d, i) => {
+        const left = i % 2 === 0;
+        return {
+          id: 'd' + i, num: '0' + (i + 2), screen: d.screen, title: d.title, decision: d.decision,
+          bg: c0.bg, img: c0.img, ratio: c0.ratio, w: c0.w,
+          on: seen['d' + i] ? 'on' : '',
+          side: left ? '' : 'rtl',
+          notePos: left ? 'left: -270px; top: 140px' : 'right: -270px; top: 140px',
+          arrow: left ? 'M8 12 C 80 2, 170 14, 232 56' : 'M232 12 C 160 2, 70 14, 8 56',
+          head: left ? 'M232 56 L 217 55 M232 56 L 226 42' : 'M8 56 L 23 55 M8 56 L 14 42',
+          noteTitle: d.noteTitle, note: d.note,
+          whys: d.why.map((w, k) => ({ n: String(k + 1), text: w })),
+          pins: d.pins.map((p, k) => ({ n: String(k + 1), x: p[0] + '%', y: p[1] + '%', delay: (0.4 + k * 0.25) + 's' }))
+        };
+      })
+    });
+    const ph = this.state.phase;
+    const bl = this.list || [];
+    const cb = this.state.curI >= 0 ? bl[this.state.curI] : null;
+    return {
+      cur: cur,
+      tabs: cases.map((k, i) => ({ name: k.name, pressed: i === ci ? 'true' : 'false', pick: () => this.pick(i) })),
+      nextName: cases[(ci + 1) % 3].name,
+      nextCase: () => this.pick((ci + 1) % 3),
+      progScale: (this.state.prog || 0).toFixed(4),
+      progNum: String(Math.round((this.state.prog || 0) * 100)),
+      progLabel: (this.state.prog || 0) >= 0.995 ? 'leído entero ✓' : Math.round((this.state.prog || 0) * 100) + '% leído',
+      on1: seen.p1 ? 'on' : '', on2: seen.p2 ? 'on' : '', on9: seen.p9 ? 'on' : '',
+      showIntro: this.state.intro,
+      rootClass: this.state.intro ? 'building' : (this.state.rendering ? 'rendering' : ''),
+      introBg: ph <= 1 ? '#2563EB' : 'transparent',
+      introOpacity: ph >= 3 ? '0' : '1',
+      introCur: cb ? 'translate(' + Math.round(cb.x + Math.min(cb.w * 0.3, 140)) + 'px,' + Math.round(cb.y + Math.min(cb.h * 0.6, 50)) + 'px)' : 'translate(70vw,80vh)',
+      introCurOpacity: ph === 2 ? '1' : '0',
+      boxes: (this.state.boxes || []).map((b, i) => Object.assign({}, b, { cls: i < this.state.builtN ? 'drawn done' : (i <= this.state.drawn ? 'drawn' : '') }))
+    };
+  }
+}
+DC.mount(Component);
+</script>
+</body>
+</html>
