@@ -4,6 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Albert — albert.fig</title>
+<script>
+// Detecta el modo "minimapa" (?minimap=1): esta misma página, cargada dentro
+// del <iframe> del navegador lateral, para que se vea literalmente la web real.
+// Se marca lo antes posible en <html> para que el CSS pueda ocultar la barra,
+// el navegador, la píldora de logros, los avisos y la capa secreta sin esperar a JS.
+try {
+  if (/(?:^|[?&])minimap=1(?:&|$)/.test(location.search)) document.documentElement.classList.add('is-minimap');
+} catch (e) {}
+</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Caveat:wght@500;700&amp;family=Architects+Daughter&amp;family=Mrs+Saint+Delafield&amp;display=swap">
 <style>
 body{margin:0}
@@ -329,6 +338,12 @@ section{scroll-margin-top:72px}
 @media print{.dotsbg::before{display:none}}
 .building.dotsbg::before{opacity:0}
 .dotsbg::before{transition:opacity .9s ease}
+/* ---- Modo "minimapa" (?minimap=1), solo dentro del <iframe> del navegador lateral ----
+   No se usa display:none/animation:none porque algunos efectos dejan su estado final
+   fijado por una animación (p. ej. la firma); en vez de quitarlas, las hacemos instantáneas
+   para que no se vea movimiento pero sí llegue al estado final "construido". */
+.is-minimap *, .is-minimap *::before, .is-minimap *::after{animation-duration:.001s !important;animation-delay:0s !important;transition-duration:0s !important;transition-delay:0s !important}
+.navmap-mini{position:relative;height:520px;overflow:hidden;background:#EEF0F3;border-radius:4px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -366,7 +381,8 @@ section{scroll-margin-top:72px}
     <button type="button" onClick="{{skipIntro}}" style="position: fixed; right: 20px; bottom: 20px; z-index: 101; font-family: 'IBM Plex Mono', monospace; font-size: 12px; cursor: pointer; color: #FFFFFF; background: transparent; border: 1px solid rgba(255,255,255,0.8); border-radius: 8px; padding: 10px 14px">Saltar intro →</button>
   </sc-if>
 
-  <!-- ================= BARRA SUPERIOR ================= -->
+  <!-- ================= BARRA SUPERIOR (oculta en modo minimapa) ================= -->
+  <sc-if value="{{showChrome}}" hint-placeholder-val="{{true}}">
   <header data-build="NAV 01 · BARRA" class="topbar" style="transform: {{headerY}}; transition: transform .45s cubic-bezier(.16,1,.3,1); position: sticky; top: 0; z-index: 30">
     <div class="topbar-in">
       <div style="display: flex; align-items: center; gap: 10px">
@@ -392,6 +408,7 @@ section{scroll-margin-top:72px}
       </div>
     </div>
   </header>
+  </sc-if>
 
   <div ref="{{pageRef}}" class="pagewrap" style="position: relative">
 
@@ -654,40 +671,24 @@ section{scroll-margin-top:72px}
     
   </div>
 
-  <!-- ================= NAVEGADOR FLOTANTE (solo al hacer scroll) ================= -->
+  <!-- ================= NAVEGADOR FLOTANTE (solo al hacer scroll; oculto en modo minimapa) =================
+       El minimapa ya no "dibuja" cada frame a mano: carga esta misma index.html dentro de un
+       <iframe src="index.html?minimap=1">, escalado para que quepa en la cajita, y encima dibuja
+       el rectángulo que marca lo que se ve ahora mismo en pantalla. Así la miniatura es literalmente
+       la página real (polaroids, firma y todo). -->
+  <sc-if value="{{showChrome}}" hint-placeholder-val="{{true}}">
   <nav class="navmap" aria-label="Vista completa de la página" style="position: fixed; top: 80px; z-index: 40; width: 148px; padding: 8px; box-sizing: border-box; background: #FFFFFF; border: 1px solid #E1E4EA; border-radius: 10px; box-shadow: 0 12px 32px rgba(15,17,23,0.16); display: flex; flex-direction: column; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; opacity: {{navOpacity}}; pointer-events: {{navEvents}}">
     <div style="color: #5A6070">Navegador</div>
-    <div style="position: relative; height: 300px; display: flex; flex-direction: column; gap: 3px; background: #EEF0F3; padding: 4px; border-radius: 4px">
-      <a href="#f01" onClick="{{ng1}}" aria-label="Frame 01 — Identidad" style="display: block; position: relative; overflow: hidden; text-decoration: none; box-sizing: border-box; border-radius: 2px; flex: 2.3; background: #FFFFFF; outline: {{nr1}}; padding: 6px; display: flex; flex-direction: column; gap: 3px">
-          <span style="display: block; width: 30%; height: 3px; background: #8A90A0; "></span><span style="display: block; width: 80%; height: 7px; background: #16181D; "></span><span style="display: block; width: 55%; height: 2px; background: #C3C8D4; "></span>
-          <span style="margin: 3px -6px 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; flex: 1"><span style="background: #1D4ED8"></span><span style="background: #166534"></span><span style="background: #A16207"></span></span>
-        </a>
-        <a href="#f02" onClick="{{ng2}}" aria-label="Frame 02 — Proyectos" style="display: block; position: relative; overflow: hidden; text-decoration: none; box-sizing: border-box; border-radius: 2px; flex: 1.7; background: #0F1117; outline: {{nr2}}; padding: 6px; display: flex; flex-direction: column; gap: 3px">
-          <span style="display: block; width: 40%; height: 4px; background: #EEF0F3; "></span><span style="display: block; width: 100%; height: 3px; background: #2E3340; "></span><span style="display: block; width: 100%; height: 3px; background: #2E3340; "></span><span style="display: block; width: 100%; height: 3px; background: #2E3340; "></span>
-          <span style="display: flex; gap: 4px; flex: 1; margin-top: 2px"><span style="flex: 1; background: #1D4ED8; border-radius: 1px"></span><span style="flex: 1; display: flex; flex-direction: column; gap: 3px"><span style="display: block; width: 90%; height: 3px; background: #C3C8D4; "></span><span style="display: block; width: 60%; height: 2px; background: #6B7280; "></span></span></span>
-        </a>
-        <a href="#f03" onClick="{{ng3}}" aria-label="Frame 03 — Logros" style="display: block; position: relative; overflow: hidden; text-decoration: none; box-sizing: border-box; border-radius: 2px; flex: 1.4; background: #FFFFFF; outline: {{nr3}}; padding: 6px; display: flex; flex-direction: column; gap: 3px">
-          <span style="display: block; width: 45%; height: 4px; background: #16181D; "></span>
-          <span style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px; height: 12px"><span style="background: #2563EB"></span><span style="background: #0F1117"></span></span>
-          <span style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; flex: 1"><span style="border: 1px solid #D3D7DE"></span><span style="border: 1px solid #D3D7DE"></span><span style="border: 1px solid #D3D7DE"></span></span>
-        </a>
-        <a href="#f04" onClick="{{ng4}}" aria-label="Frame 04 — Fuera del lienzo" style="display: block; position: relative; overflow: hidden; text-decoration: none; box-sizing: border-box; border-radius: 2px; flex: 1.6; background: #FFFFFF; outline: {{nr4}}; padding: 6px">
-          <span style="display: block; width: 60%; height: 4px; background: #16181D; "></span><span style="display: block; width: 50%; height: 2px; background: #D3D7DE; margin-top: 3px"></span><span style="display: block; width: 45%; height: 2px; background: #D3D7DE; margin-top: 2px"></span>
-          <span style="position: absolute; left: 8px; top: 30px; width: 16px; height: 18px; background: #FFFFFF; border: 1px solid #C9CED8; transform: rotate(-9deg)"></span>
-          <span style="position: absolute; left: 30px; top: 34px; width: 16px; height: 18px; background: #FFFFFF; border: 1px solid #C9CED8; transform: rotate(7deg)"></span>
-          <span style="position: absolute; left: 54px; top: 28px; width: 16px; height: 18px; background: #FFFFFF; border: 1px solid #C9CED8; transform: rotate(-4deg)"></span>
-          <span style="position: absolute; left: 76px; top: 36px; width: 16px; height: 18px; background: #FFFFFF; border: 1px solid #C9CED8; transform: rotate(11deg)"></span>
-          <span style="position: absolute; left: 98px; top: 30px; width: 16px; height: 18px; background: #FFFFFF; border: 1px solid #C9CED8; transform: rotate(-7deg)"></span>
-        </a>
-        <a href="#f05" onClick="{{ng5}}" aria-label="Frame 05 — Contacto" style="display: block; position: relative; overflow: hidden; text-decoration: none; box-sizing: border-box; border-radius: 2px; flex: 1.3; background: #1D4ED8; outline: {{nr5}}; padding: 6px">
-          <span style="display: block; width: 55%; height: 6px; background: #FFFFFF; "></span>
-          <span style="display: block; margin-top: 4px; width: 26px; height: 6px; background: #FFFFFF; border-radius: 2px"></span>
-          <span style="position: absolute; right: 10px; top: 8px; width: 22px; height: 26px; background: #FFFFFF; transform: rotate(-4deg)"></span>
-        </a>
-      <div style="position: absolute; left: -3px; right: -3px; top: {{viewTop}}; height: 18%; border: 1.5px solid #2563EB; background: rgba(37,99,235,0.08); border-radius: 3px; pointer-events: none"></div>
+    <div class="navmap-mini" ref="{{miniBoxRef}}" onClick="{{miniClick}}" aria-label="Haz clic para ir a ese punto de la página">
+      <!-- El translate()/scale() de este bloque (página entera centrada en la caja) lo pone updateMini() en JS -->
+      <div class="navmap-inner" ref="{{miniInnerRef}}" style="position: absolute; left: 0; top: 0; width: 1440px; transform-origin: top left">
+        <iframe src="index.html?minimap=1" ref="{{miniFrameRef}}" tabindex="-1" aria-hidden="true" loading="lazy" style="display: block; width: 1440px; border: none; background: #FFFFFF; pointer-events: none"></iframe>
+        <div class="navmap-rect" ref="{{miniRectRef}}" style="position: absolute; left: 0; width: 1440px; border: 1.5px solid #2563EB; background: rgba(37,99,235,0.08); border-radius: 3px; pointer-events: none"></div>
+      </div>
     </div>
     <div style="display: flex; justify-content: space-between; color: #16181D"><span>{{prop.num}}</span><span>{{progress}}</span></div>
   </nav>
+  </sc-if>
 
 
   <!-- ================= FORMULARIO: se diseña al abrirse ================= -->
@@ -699,7 +700,7 @@ section{scroll-margin-top:72px}
         <sc-if value="{{formSent}}" hint-placeholder-val="{{false}}">
           <div style="display: flex; flex-direction: column; gap: 12px; padding: 20px 0; color: #16181D">
             <div style="font-size: 26px; font-weight: 700; letter-spacing: -0.02em">¡Gracias!</div>
-            <div style="font-size: 15px; line-height: 1.5; color: #3A3F4C">Se ha abierto tu app de correo con el mensaje listo para enviar. Si no se abre, escríbeme a <a href="mailto:designedbyalbertgalindo@gmail.com" onClick="{{copyMail}}" title="Clic para copiar">designedbyalbertgalindo@gmail.com</a>.</div>
+            <div style="font-size: 15px; line-height: 1.5; color: #3A3F4C">Tu mensaje ya está en camino. Te responderé en cuanto lo lea. Si prefieres, también puedes escribirme a <a href="mailto:designedbyalbertgalindo@gmail.com" onClick="{{copyMail}}" title="Clic para copiar">designedbyalbertgalindo@gmail.com</a>.</div>
             <button type="button" onClick="{{closeForm}}" style="align-self: flex-start; font-family: inherit; font-size: 15px; cursor: pointer; border: none; background: #2563EB; color: #FFFFFF; padding: 12px 18px; border-radius: 10px; font-weight: 700">Cerrar</button>
           </div>
         </sc-if>
@@ -780,7 +781,8 @@ section{scroll-margin-top:72px}
   <sc-if value="{{eggToastOn}}" hint-placeholder-val="{{false}}">
     <div role="status" aria-live="polite" class="eggtoast" style="position: fixed; left: 50%; bottom: 24px; z-index: 135; transform: translateX(-50%); max-width: calc(100vw - 32px); display: flex; align-items: center; gap: 10px; background: #16181D; color: #FFFFFF; font-family: 'Instrument Sans', sans-serif; font-size: 14px; padding: 10px 16px 10px 12px; border-radius: 999px; box-shadow: 0 14px 34px rgba(15,17,23,0.28)"><span style="width: 10px; height: 10px; border-radius: 2px; background: #2563EB; flex: none"></span>{{eggToast}}</div>
   </sc-if>
-  <!-- capa 00: fuera del pagewrap para que no herede su transform -->
+  <!-- capa 00: fuera del pagewrap para que no herede su transform (oculta en modo minimapa) -->
+  <sc-if value="{{showChrome}}" hint-placeholder-val="{{true}}">
     <div class="pagefold" ref="{{foldRef}}" aria-hidden="true"><div class="pagefold-in"></div></div>
     <section id="secreto" ref="{{secretRef}}" class="secret {{secretOpen}}" aria-label="Debajo del lienzo" aria-hidden="{{secretHidden}}">
       <div class="secret-stick">
@@ -800,6 +802,7 @@ section{scroll-margin-top:72px}
         </div>
       </div>
     </section>
+  </sc-if>
 </div>
 </template>
 <div id="dc-root"></div>
@@ -822,9 +825,18 @@ const EGGS = [
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { fid: 50, active: 0, now: new Date(), section: 0, prog: 0, scrolling: false, intro: true, rendering: false, formOpen: false, formSent: false, eggs: {}, photos: {}, cases: {}, eggsOpen: false, eggPulse: false, logoN: 0, prizeOpen: false, duel: 'idle', duelMs: 0, duelBest: 0, visits: 1, headerHidden: false, openDec: 0, boxes: [], drawn: -1, builtN: 0, introPhase: 0, curI: -1, layersOpen: false, testiOpen: false, copied: false, zoomOut: false, origin: '50% 0px', flash: -1, toast: '', tip: '', tipOn: false, seen: [false, false, false, false, false] };
+    // Modo "minimapa": esta página cargada dentro de su propio <iframe> de navegador
+    // lateral. Arranca ya "construida" (sin intro, todo marcado como visto) y sin tocar
+    // localStorage, para que el minimapa sea un pantallazo fiel y estático de la web real.
+    let isMinimap = false;
+    try { isMinimap = /(?:^|[?&])minimap=1(?:&|$)/.test(location.search); } catch (e) {}
+    this.isMinimap = isMinimap;
+    this.state = { fid: 50, active: 0, now: new Date(), section: 0, prog: 0, scrolling: false, intro: !isMinimap, rendering: false, formOpen: false, formSent: false, eggs: {}, photos: {}, cases: {}, eggsOpen: false, eggPulse: false, logoN: 0, prizeOpen: false, duel: 'idle', duelMs: 0, duelBest: 0, visits: 1, headerHidden: false, openDec: 0, boxes: [], drawn: -1, builtN: 0, introPhase: 0, curI: -1, layersOpen: false, testiOpen: false, copied: false, zoomOut: false, origin: '50% 0px', flash: -1, toast: '', tip: '', tipOn: false, seen: isMinimap ? [true, true, true, true, true] : [false, false, false, false, false], sigOn: isMinimap };
   }
   componentDidMount() {
+    // En modo minimapa no hace falta nada de esto: ni listeners de scroll/rueda/teclado/
+    // ratón/touch, ni temporizadores, ni contar visitas o logros, ni leer/escribir localStorage.
+    if (this.isMinimap) return;
     this.onWheelPull = (e) => {
       if (this.state.secretOpen) { if (e.cancelable) e.preventDefault(); return; }
       if (e.deltaY > 0 || this.pull) this.pullBy(e.deltaY > 0 ? Math.min(e.deltaY, 120) : Math.max(e.deltaY, -240));
@@ -875,8 +887,42 @@ class Component extends DCLogic {
       this.hideT = setTimeout(() => this.setState({ scrolling: false }), 1200);
       if (!this.state.intro) this.checkSeen(false);
       if (this.state.zoomOut) this.setState({ origin: '50% ' + Math.round(t.scrollTop + window.innerHeight / 2) + 'px' });
+      this.scheduleMini();
     };
     document.addEventListener('scroll', this.onScroll, { capture: true, passive: true });
+
+    // ---- Minimapa del navegador lateral: se ve la página ENTERA dentro de la cajita
+    // (sin recortar ni desplazar), así que la escala la manda el lado que más limite —
+    // el ancho o el alto — y lo que sobra se centra. Solo el rectángulo de "lo que se ve"
+    // se recoloca en cada scroll; la escala solo cambia al cargar el iframe o al redimensionar.
+    this.miniScale = 0;
+    this.miniOffX = 0;
+    this.miniOffY = 0;
+    this.miniPageH = 0;
+    this.updateMini = (opts) => {
+      const box = this.miniBoxEl, inner = this.miniInnerEl, rect = this.miniRectEl, frame = this.miniFrameEl;
+      if (!box || !inner || !frame || window.innerWidth <= 760) return;
+      if (opts && opts.measure) {
+        let h = 0;
+        try { h = frame.contentDocument.documentElement.scrollHeight; } catch (e) {}
+        this.miniPageH = h || this.miniPageH || document.documentElement.scrollHeight;
+        frame.style.height = this.miniPageH + 'px';
+        this.miniScale = Math.min(box.clientWidth / 1440, box.clientHeight / this.miniPageH);
+        this.miniOffX = (box.clientWidth - 1440 * this.miniScale) / 2;
+        this.miniOffY = (box.clientHeight - this.miniPageH * this.miniScale) / 2;
+        inner.style.transform = 'translate(' + this.miniOffX.toFixed(1) + 'px,' + this.miniOffY.toFixed(1) + 'px) scale(' + this.miniScale.toFixed(4) + ')';
+      }
+      if (!this.miniScale) return;
+      const se = document.scrollingElement || document.documentElement;
+      if (rect) { rect.style.top = se.scrollTop + 'px'; rect.style.height = Math.max(4, window.innerHeight) + 'px'; }
+    };
+    this.miniRaf = null;
+    this.scheduleMini = () => {
+      if (this.miniRaf || window.innerWidth <= 760) return;
+      this.miniRaf = requestAnimationFrame(() => { this.miniRaf = null; this.updateMini(); });
+    };
+    this.onMiniResize = () => { clearTimeout(this.miniResizeT); this.miniResizeT = setTimeout(() => this.updateMini({ measure: true }), 150); };
+    window.addEventListener('resize', this.onMiniResize, { passive: true });
     let reduce = false;
     try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
     this.reduce = reduce;
@@ -1201,6 +1247,20 @@ class Component extends DCLogic {
     }, 1050);
     this.jT3 = setTimeout(() => this.setState({ flash: -1, toast: '' }), 2400);
   }
+  // Como goTo(), pero a un punto cualquiera de la página (lo usa el clic en el minimapa,
+  // que no apunta a un frame concreto sino a una altura proporcional).
+  goToY(y) {
+    const se = document.scrollingElement || document.documentElement;
+    const max = Math.max(0, se.scrollHeight - window.innerHeight);
+    const target = Math.max(0, Math.min(y, max));
+    clearTimeout(this.jT1); clearTimeout(this.jT2); clearTimeout(this.jT3);
+    if (this.reduce) { se.scrollTop = target; return; }
+    this.setState({ zoomOut: true, origin: '50% ' + Math.round(se.scrollTop + window.innerHeight / 2) + 'px', toast: '', flash: -1 });
+    this.jT1 = setTimeout(() => se.scrollTo({ top: target, behavior: 'smooth' }), 260);
+    this.jT2 = setTimeout(() => {
+      this.setState({ zoomOut: false, origin: '50% ' + Math.round(se.scrollTop + window.innerHeight / 2) + 'px' });
+    }, 1050);
+  }
   checkSeen(force) {
     const seen = this.state.seen.slice();
     let changed = false;
@@ -1238,8 +1298,11 @@ class Component extends DCLogic {
     (this.buildTimers || []).forEach((t) => clearTimeout(t));
     clearTimeout(this.renderT);
     cancelAnimationFrame(this.raf);
+    cancelAnimationFrame(this.miniRaf);
+    clearTimeout(this.miniResizeT);
     document.removeEventListener('mousemove', this.onMove);
     document.removeEventListener('scroll', this.onScroll, { capture: true });
+    window.removeEventListener('resize', this.onMiniResize);
   }
   renderVals() {
     const fid = this.state.fid, active = this.state.active, section = this.state.section;
@@ -1353,7 +1416,6 @@ class Component extends DCLogic {
       progress: Math.round(this.state.prog * 100) + '%',
       navOpacity: this.state.scrolling ? '1' : '0',
       navEvents: this.state.scrolling ? 'auto' : 'none',
-      viewTop: (this.state.prog * 82) + '%',
       cells: cellColors.map((c, i) => ({ n: '0' + (i + 1), name: '[PROYECTO 0' + (i + 1) + ']', bg: c.bg, fg: c.fg })),
       marks: caseData.map((k, i) => ({ left: k.left, color: i === active ? '#2563EB' : '#5A6070' })),
       cur: cur,
@@ -1390,6 +1452,27 @@ class Component extends DCLogic {
       }))
     };
     out.showIntro = this.state.intro;
+    // En modo minimapa se ocultan barra, navegador, píldora de logros, avisos y capa secreta.
+    out.showChrome = !this.isMinimap;
+    // ---- Minimapa (navegador lateral): refs al contenedor, al iframe y al rectángulo ----
+    out.miniBoxRef = (el) => { this.miniBoxEl = el; };
+    out.miniInnerRef = (el) => { this.miniInnerEl = el; };
+    out.miniRectRef = (el) => { this.miniRectEl = el; };
+    out.miniFrameRef = (el) => {
+      if (!el || this.miniFrameEl === el) return;
+      this.miniFrameEl = el;
+      el.addEventListener('load', () => this.updateMini({ measure: true }));
+    };
+    out.miniClick = (e) => {
+      const scale = this.miniScale || 0;
+      if (!scale) return;
+      const se = document.scrollingElement || document.documentElement;
+      const pageH = this.miniPageH || se.scrollHeight;
+      const r = e.currentTarget.getBoundingClientRect();
+      // píxel pulsado dentro de la cajita -> píxel real de la página (deshace el centrado y la escala)
+      const realY = (e.clientY - r.top - (this.miniOffY || 0)) / scale;
+      this.goToY(Math.max(0, Math.min(realY - window.innerHeight / 2, pageH - window.innerHeight)));
+    };
     out.goProcess = () => { this.findEgg('proceso'); try { window.localStorage.setItem('albertfig-case', String(this.state.active || 0)); window.localStorage.setItem('albertfig-proc-go', String(Date.now())); } catch (e) {} };
     out.mailTag = this.state.mailCopied ? 'copiado ✓' : 'copiar';
     out.copyMail = (e) => {
@@ -1461,7 +1544,7 @@ class Component extends DCLogic {
       out.eggsAll = n >= EGGS.length;
       out.eggTotal = String(EGGS.length);
       out.eggList = defs.map((d) => ({ cls: eg[d.id] ? 'got' : '', title: eg[d.id] ? d.title : '???', color: eg[d.id] ? '#16181D' : '#9AA3B5', hint: eg[d.id] ? '¡Encontrado!' : d.hint }));
-      out.showEggHud = !this.state.intro && !this.state.prizeOpen && (this.state.eggsOpen || !!this.state.hudOn);
+      out.showEggHud = !this.isMinimap && !this.state.intro && !this.state.prizeOpen && (this.state.eggsOpen || !!this.state.hudOn);
       out.eggsOpen = this.state.eggsOpen;
       out.eggsOpenStr = this.state.eggsOpen ? 'true' : 'false';
       out.eggPulse = this.state.eggPulse ? 'pulse' : '';
@@ -1507,7 +1590,14 @@ class Component extends DCLogic {
       const d = this.fdata || {};
       const subject = 'Hola Albert — ' + (d.name || 'desde tu portfolio');
       const body = (d.msg || '') + '\n\n— ' + (d.name || '') + ' (' + (d.email || '') + ')';
-      try { window.open('mailto:designedbyalbertgalindo@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body), '_blank'); } catch (err) {}
+      // Envía el formulario a Web3Forms (sin backend propio); si falla, cae al mailto como respaldo.
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ access_key: 'daf37279-d077-4b65-a52e-267211ec3688', subject: subject, name: d.name || '', email: d.email || '', message: d.msg || '' })
+      }).then((r) => r.json()).then((j) => { if (!j || !j.success) throw new Error('web3forms'); }).catch(() => {
+        try { window.open('mailto:designedbyalbertgalindo@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body), '_blank'); } catch (err) {}
+      });
       this.setState({ formSent: true });
     };
     out.visitNo = String(this.state.visits || 1).padStart(3, '0');
